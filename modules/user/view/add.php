@@ -1,12 +1,14 @@
 <?php
+
 /*
- * mvc ;
- * edit.php ;
- * Satria Persada <triasada@yahoo.com> ;
- * Nov 5, 2017;
- * 1:31:13 AM;
- * Jakarta International Container Terminal (JICT);
- */
+* mymvc ;
+* add.php ;
+* Satria Persada <triasada@yahoo.com> ;
+* Nov 7, 2017;
+* 11:03:38 PM;
+* Jakarta International Container Terminal (JICT);
+*/
+
 ?>
 
         <div class="row">
@@ -20,10 +22,15 @@
                         <div class="row">
                             <div class="col-md-6">
 
-                                <form role="form" id="userForm"  action="<?= URL . $this->activeMenu ?>/<?= $this->activeMenu ?>/editSave/<?= $this->userData['id'] ?>">
-                                    <div class="form-group input-group input-group">
+                                <form role="form" id="userForm"  action="<?= URL . $this->activeMenu ?>/<?= $this->activeMenu ?>/addSave/">
+                                    <div id="username" class="form-group input-group input-group">
                                         <span class="input-group-addon" style="width: 100px">UserName</span>
-                                        <input class="form-control" name='username' value="<?= $this->userData['username'] ?>"/>
+                                        <input  class="form-control" name='username' value=""/>
+                                        <p class="help-block"></p>
+                                    </div>
+                                    <div class="form-group input-group input-group">
+                                        <span class="input-group-addon" style="width: 100px">Password</span>
+                                        <input type="password" class="form-control" name='password' value=""/>
                                         <p class="help-block"></p>
                                     </div>
                                     
@@ -32,7 +39,7 @@
                                         <select class="form-control" name='groupid' >
                                             <?php
                                             foreach ($this->userGroup as $group) {
-                                                $selected = ($group['id'] == $this->userData['groupid']) ? 'selected' : '';
+                                                
                                                 ?>
 
                                                 <option value="<?= $group['id'] ?>" <?= $selected ?>><?= $group['groupName'] ?></option>
@@ -44,16 +51,26 @@
                                     </div>
                                     <div class="form-group input-group input-group">
                                         <span class="input-group-addon" style="width: 100px">First Name</span>
-                                        <input  class="form-control" name='fname' value="<?= $this->userData['fname'] ?>" />
+                                        <input  class="form-control" name='fname' value="" />
                                         <p class="help-block"></p>
                                     </div>
                                     <div class="form-group input-group input-group">
                                         <span class="input-group-addon" style="width: 100px">Last Name</span>
-                                        <input  class="form-control" name='lname' value="<?= $this->userData['lname'] ?>" />
+                                        <input  class="form-control" name='lname' value="" />
+                                        <p class="help-block"></p>
+                                    </div>
+                                    <div class="form-group input-group input-group">
+                                        <span class="input-group-addon" style="width: 100px">Address</span>
+                                        <input type="text" class="form-control" name='address' value="" />
+                                        <p class="help-block"></p>
+                                    </div>
+                                    <div class="form-group input-group input-group">
+                                        <span class="input-group-addon" style="width: 100px">email</span>
+                                        <input  class="form-control" name='email' value="" />
                                         <p class="help-block"></p>
                                     </div>
 
-                                    <button  type="button" class="btn btn-success" onclick="editUserSubmit()" >Submit</button>
+                                    <button  type="button" class="btn btn-success" onclick="addUserSubmit()" >Submit</button>
                                     <button type="reset" class="btn btn-primary">Reset</button>
 
                                 </form>

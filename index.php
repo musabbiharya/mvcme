@@ -8,8 +8,8 @@ function __autoload($class) {
     require LIBS . $class .".php";
 }
 
-//error_reporting(1);
-//        ini_set('display_errors', 'on');
+error_reporting(1);
+        ini_set('display_errors', 'on');
 // Load the Bootstrap!
 $bootstrap = new Bootstrap();
 

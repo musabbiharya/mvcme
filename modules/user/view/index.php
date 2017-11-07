@@ -15,7 +15,8 @@
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                             Menu Tables
+                            <a class="glyphicon glyphicon-plus btn btn-success" href="<?=URL.$this->activeMenu?>/<?=$this->activeMenu?>/add/">Add</a>
+                           
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">

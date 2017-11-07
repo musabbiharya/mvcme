@@ -4,21 +4,30 @@
  * and open the template in the editor.
  */
 
-function editUserSubmit(){
-    
+function editUserSubmit() {
+
     var data = $("#userForm").serialize();
 //    alert($("#userForm").attr('action'));
-    
-  $.ajax({
-  type: "POST",
-  url: $("#userForm").attr('action'),
-  data: data,
-  success: function (data) {
-       (data.error=0)?splash('glyphicon-ok','alert-success',data.msg):splash('glyphicon-remove','alert-danger',data.msg);
-            
-            },
-  dataType: 'JSON'
-});
+    $('#splash').removeClass();
+    $('#splash span').removeClass();
+    $.ajax({
+        type: "POST",
+        url: $("#userForm").attr('action'),
+        data: data,
+        success: function (data) {
+            console.log(home);
+            if (data.success) {
+//                alert('asu');
+                splash('glyphicon glyphicon-ok', 'alert alert-success', data.msg,'user');
+                
+            } else {
+                splash('glyphicon glyphicon-remove', 'alert alert-danger', data.msg,'user');
+//              
+            }
 
-    
+        },
+        dataType: 'JSON'
+    });
+
+
 }

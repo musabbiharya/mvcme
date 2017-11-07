@@ -9,9 +9,11 @@
 * Jakarta International Container Terminal (JICT);
 */
 class Backend extends Controller{
-    function __construct() {
+        private $id;
+            function __construct() {
         parent::__construct();
         Auth::handleLogin();
+        $this->id = $_SESSION['userid'];
 //        @session_start();
         $this->view->nameuser=$_SESSION['userProfileName'];
         $this->loadModel('backend');

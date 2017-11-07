@@ -26,19 +26,42 @@ class User extends Backend {
         $this->view->title = "Edit User";
         $data = $this->model->getUser($id);
         $this->view->userData = $data[0];
-        $this->view->userGroup=$this->model->getGroupAll();
+        $this->view->userGroup = $this->model->getGroupAll();
         $this->rendering('user', 'edit');
     }
-    public function save($id){
-        $data['id']=$id;
-        $data['username']= filter_input(INPUT_POST, 'username');
-       
-        $data['groupid']= filter_input(INPUT_POST, 'groupid');
-        $data['fname']= filter_input(INPUT_POST, 'fname');
-        $data['lname']= filter_input(INPUT_POST, 'lname');
-        $result = $this->model->update($data);
-      echo json_encode(array('error'=>0,'msg'=>$_POST['username']));
+    public function add() {
+        $this->view->js = array('js/add.js');
+        $this->view->title = "Add User";
+         $this->view->userGroup = $this->model->getGroupAll();
+        $this->rendering('user', 'add');
     }
-    
+
+    public function editSave($id) {
+        $data[0] = $id;
+        $data[1] = (string) filter_input(INPUT_POST, 'username');
+
+        $data[2] = filter_input(INPUT_POST, 'groupid');
+        $data[3] = filter_input(INPUT_POST, 'fname');
+        $data[4] = filter_input(INPUT_POST, 'lname');
+        $data[5] = $this->id;
+        $result = $this->model->editUser($data);
+        $success = ($result['ErrorCode'] == '00') ? true : false;
+        echo json_encode(array('success' => $success, 'msg' => $result['ErrorMessage']));
+    }
+
+    public function addSave() {
+
+        $data[0] =  filter_input(INPUT_POST, 'username');
+        $data[1] = filter_input(INPUT_POST, 'password');
+        $data[2] = filter_input(INPUT_POST, 'groupid');
+        $data[3] = filter_input(INPUT_POST, 'fname');
+        $data[4] = filter_input(INPUT_POST, 'lname');
+        $data[5] = filter_input(INPUT_POST, 'address');
+        $data[6] = filter_input(INPUT_POST, 'email');
+        $data[7] = $this->id;
+        $result = $this->model->addUser($data);
+        $success = ($result['ErrorCode'] == '00') ? true : false;
+        echo json_encode(array('success' => $success, 'msg' => $result['ErrorMessage']));
+    }
 
 }

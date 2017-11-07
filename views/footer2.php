@@ -3,9 +3,12 @@
 </div>
 <!-- /. PAGE WRAPPER  -->
 <script src="<?php echo BACKEND; ?>assets/js/splash.js"></script>
+<script src="<?php echo BACKEND; ?>assets/js/validate.js"></script>
 <script>
+    var home ='<?php echo URL?>';
     $( document ).ready(function() {
         var a= "<?php echo $this->activeMenu?>";
+        
        $("#"+a).addClass('active-menu');
     });
 </script>
