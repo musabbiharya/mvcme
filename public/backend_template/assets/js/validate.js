@@ -3,16 +3,55 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-jQuery.fn.extend( {
-        validateForm: function() {
-          var a =  this.find('input required');
-         this.removeClass('has-error');
-          if ((a=="") || (a.length<8)){
-              return this.addClass('has-error');
-          }
-          else {
-              return this.addClass('has-success');
-          }
-        },
-        y: function() {}
+
+
+jQuery.fn.extend({
+
+    validasi: function (option) {
+        if (option.role !== undefined) {
+            var objRole = option.role;
+            var property;
+
+            for (property in objRole) {
+                var elemen= $(this).find('#' + property);
+                var elementObj = elemen.find(':input');
+//                console.log(elemen);
+                elemen.removeClass('has-error');
+                elemen.removeClass('has-success');
+//                 elementObj.removeClass('has-error');
+//                elementObj.removeClass('has-success');
+                elemen.addClass(objRole[property]);
+                elemen.find('.help-block').html('');
+
+                if (elementObj.val() === "") {
+                    elemen.error();
+//                    elementObj.error();
+                    if (option.message[property] !== undefined) {
+                        elemen.find('.help-block').html(option.message[property]);
+                    }else{
+                        elemen.find('.help-block').html('required');
+                    }
+
+                } else if (option.minLength !== undefined) {
+                    if (elementObj.val().length < option.minLength[property]) {
+                        elemen.error();
+//                        elementObj.error();
+                        elemen.find('.help-block').html('minimal '+option.minLength[property]+' karakter');
+                        
+
+
+                    }
+
+                }
+            }
+        }
+        return !($(this).find('div').hasClass('has-error'));
+
+    },
+    error: function () {
+        return this.addClass('has-error');
+    },
+    success: function () {
+        return this.addClass('has-success');
+    }
 });

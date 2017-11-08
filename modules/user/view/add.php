@@ -22,13 +22,13 @@
                         <div class="row">
                             <div class="col-md-6">
 
-                                <form role="form" id="userForm"  action="<?= URL . $this->activeMenu ?>/<?= $this->activeMenu ?>/addSave/">
+                                <form role="form" id="userForm"  action="<?= URL . $this->activeMenu ?>/<?= $this->activeMenu ?>/addSave/" onsubmit="return addUserSubmit()">
                                     <div id="username" class="form-group input-group input-group">
                                         <span class="input-group-addon" style="width: 100px">UserName</span>
                                         <input  class="form-control" name='username' value=""/>
                                         <p class="help-block"></p>
                                     </div>
-                                    <div class="form-group input-group input-group">
+                                    <div id="password" class="form-group input-group input-group">
                                         <span class="input-group-addon" style="width: 100px">Password</span>
                                         <input type="password" class="form-control" name='password' value=""/>
                                         <p class="help-block"></p>
@@ -49,28 +49,28 @@
 
                                         </select>
                                     </div>
-                                    <div class="form-group input-group input-group">
+                                    <div id="fname" class="form-group input-group input-group">
                                         <span class="input-group-addon" style="width: 100px">First Name</span>
                                         <input  class="form-control" name='fname' value="" />
                                         <p class="help-block"></p>
                                     </div>
-                                    <div class="form-group input-group input-group">
+                                    <div id="lname" class="form-group input-group input-group">
                                         <span class="input-group-addon" style="width: 100px">Last Name</span>
                                         <input  class="form-control" name='lname' value="" />
                                         <p class="help-block"></p>
                                     </div>
-                                    <div class="form-group input-group input-group">
+                                    <div id="address" class="form-group input-group input-group">
                                         <span class="input-group-addon" style="width: 100px">Address</span>
                                         <input type="text" class="form-control" name='address' value="" />
                                         <p class="help-block"></p>
                                     </div>
-                                    <div class="form-group input-group input-group">
+                                    <div id="email" class="form-group input-group input-group">
                                         <span class="input-group-addon" style="width: 100px">email</span>
                                         <input  class="form-control" name='email' value="" />
                                         <p class="help-block"></p>
                                     </div>
 
-                                    <button  type="button" class="btn btn-success" onclick="addUserSubmit()" >Submit</button>
+                                    <button  type="submit" class="btn btn-success"  >Submit</button>
                                     <button type="reset" class="btn btn-primary">Reset</button>
 
                                 </form>

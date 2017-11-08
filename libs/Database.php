@@ -1,10 +1,11 @@
 <?php
-
+require_once 'Logging.php';
 class Database extends PDO {
 
     public function __construct($DB_TYPE, $DB_HOST, $DB_NAME, $DB_USER, $DB_PASS) {
         parent::__construct($DB_TYPE . ':host=' . $DB_HOST . ';dbname=' . $DB_NAME, $DB_USER, $DB_PASS);
-
+        $this->log = new Logging();
+        $this->log->lfile('/Users/satria/Sites/mymvc/logfile.txt');
         //parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTIONS);
     }
 
@@ -88,9 +89,11 @@ class Database extends PDO {
         $fieldValuesOut = '@' . implode(', @', $out);
        
         $query = "call $table($fieldValues,$fieldValuesOut)";
+        $this->log->lwrite($query);
         $sth = $this->prepare($query);
         foreach ($data as $key => $value) {
             $sth->bindValue(":$key", $value);
+            $this->log->lwrite(":$key = ".$value);
         }
         $sth->execute();
         $fieldValuesOutArray = explode(',', $fieldValuesOut);

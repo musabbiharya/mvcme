@@ -9,7 +9,7 @@
 * Jakarta International Container Terminal (JICT);
 */
 class Backend extends Controller{
-        private $id;
+    protected $id;
             function __construct() {
         parent::__construct();
         Auth::handleLogin();

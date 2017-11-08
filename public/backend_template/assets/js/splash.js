@@ -5,11 +5,12 @@
  */
 
 
-function splash(spanClass,divClass,msg,urlRedirect){
+function splash(spanClass,divClass,msg){
     $('#splash span').addClass(spanClass).html(msg);
-    $('#splash').addClass(divClass).show().delay(1000).fadeOut(400);
-    setTimeout(function() {
+    $('#splash').addClass(divClass).show().delay(8000).fadeOut(400);
+}
+function redirect(){
+ setTimeout(function(urlRedirect) {
   window.location.href = home + urlRedirect;
-}, 2000);
-   
+}, 2000);   
 }

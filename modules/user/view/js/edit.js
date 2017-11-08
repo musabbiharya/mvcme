@@ -18,10 +18,11 @@ function editUserSubmit() {
             console.log(home);
             if (data.success) {
 //                alert('asu');
-                splash('glyphicon glyphicon-ok', 'alert alert-success', data.msg,'user');
+                splash('glyphicon glyphicon-ok', 'alert alert-success', data.msg); 
+                redirect('user');
                 
             } else {
-                splash('glyphicon glyphicon-remove', 'alert alert-danger', data.msg,'user');
+                splash('glyphicon glyphicon-remove', 'alert alert-danger', data.msg);
 //              
             }
 
