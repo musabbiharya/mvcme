@@ -15,7 +15,8 @@
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                             Menu Tables
+                              <a class="glyphicon glyphicon-plus btn btn-success" href="<?=URL.$this->activeMenu?>/<?=$this->activeMenu?>/add/">Add</a>
+                           
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -28,19 +29,32 @@
                                             <th>Parent</th>
                                             <th>Order</th>
                                             <th>Link</th>
+                                            <th>Operation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($this->menuList as $item) { ?>
+                                        <?php $i=1; foreach ($this->data['data'] as $item) { 
+                                            ?>
                                             <tr class="odd gradeX">
-                                            <td><?=$item['id']?></td>
+                                            <td><?=$i?></td>
                                             <td><?=$item['menuName']?></td>
                                             <td><?=$item['menuDesc']?></td>
                                             <td class="center"><?=$item['parent']?></td>
                                             <td class="center"><?=$item['menuOrder']?></td>
                                             <td class="center"><?=$item['link']?></td>
+                                            <td><div class="btn-group">
+											  <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span></button>
+											  <ul class="dropdown-menu">
+												<li><a href="<?=URL.$this->activeMenu?>/<?=$this->activeMenu?>/edit/<?=$item['id']?>">Edit</a></li>
+                                                                                                <?php if ($item['id']<> 1){?>
+                                                                                                <li><a href="javascript:void(0)" data-toggle="modal" data-id="<?=$item['id']?>"  data-target="#myModal" class="openModal">Delete</a></li>
+                                                                                                <?php }?>
+                                                                                          </ul>
+											</div></td>
                                         </tr>
-                                        <?php } ?>
+                                        <?php $i++;
+                                        
+                                                                                                } ?>
                                         
                                     </tbody>
                                 </table>

@@ -26,11 +26,13 @@ jQuery.fn.extend({
                 if (elementObj.val() === "") {
                     elemen.error();
 //                    elementObj.error();
+                if (option.message !== undefined){
                     if (option.message[property] !== undefined) {
                         elemen.find('.help-block').html(option.message[property]);
                     } else {
                         elemen.find('.help-block').html('required');
                     }
+                }else{elemen.find('.help-block').html('required');}
 
                 } else if (option.minLength !== undefined) {
                     if (elementObj.val().length < option.minLength[property]) {

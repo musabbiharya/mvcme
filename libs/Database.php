@@ -1,11 +1,13 @@
 <?php
+
 require_once 'Logging.php';
+
 class Database extends PDO {
 
     public function __construct($DB_TYPE, $DB_HOST, $DB_NAME, $DB_USER, $DB_PASS) {
         parent::__construct($DB_TYPE . ':host=' . $DB_HOST . ';dbname=' . $DB_NAME, $DB_USER, $DB_PASS);
         $this->log = new Logging();
-        $this->log->lfile('/Users/satria/Sites/mymvc/logfile_'.date('dMY').'.txt');
+        $this->log->lfile('/Users/satria/Sites/mymvc/logfile_' . date('dMY') . '.txt');
         //parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTIONS);
     }
 
@@ -44,6 +46,7 @@ class Database extends PDO {
         }
 
         $sth->execute();
+        return ($sth->rowCount());
     }
 
     /**
@@ -60,14 +63,15 @@ class Database extends PDO {
             $fieldDetails .= "`$key`=:$key,";
         }
         $fieldDetails = rtrim($fieldDetails, ',');
-
-        $sth = $this->prepare("UPDATE $table SET $fieldDetails WHERE $where");
+        $query ="UPDATE $table SET $fieldDetails WHERE $where";
+        $this->log->lwrite($query);
+        $sth = $this->prepare($query);
 
         foreach ($data as $key => $value) {
             $sth->bindValue(":$key", $value);
         }
-
         $sth->execute();
+        return ($sth->rowCount());
     }
 
     /**
@@ -87,17 +91,17 @@ class Database extends PDO {
         ksort($data);
         $fieldValues = ':' . implode(', :', array_keys($data));
         $fieldValuesOut = '@' . implode(', @', $out);
-       
+
         $query = "call $table($fieldValues,$fieldValuesOut)";
         $this->log->lwrite($query);
         $sth = $this->prepare($query);
         foreach ($data as $key => $value) {
             $sth->bindValue(":$key", $value);
-            $this->log->lwrite(":$key = ".$value);
+            $this->log->lwrite(":$key = " . $value);
         }
         $sth->execute();
         $fieldValuesOutArray = explode(',', $fieldValuesOut);
-        
+
         $sql = '';
         foreach ($out as $key => $value) {
             $sql [$key] = "$fieldValuesOutArray[$key] as $value";

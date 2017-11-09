@@ -30,4 +30,10 @@ class Backend extends Controller{
         $this->view->renderModule($module,$name);
         $this->view->render('footer2');
     }
+    public function del($id) {
+        $result = $this->model->del($id);
+        $success = ($result === 1) ? true : false;
+        $msg = ($result === 1) ? 'success' : 'failed';
+        echo json_encode(array('success' => $success, 'msg' => $msg));
+    }
 }

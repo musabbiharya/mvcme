@@ -10,12 +10,25 @@
  */
 
 class Menu_Model extends Model {
-
+    protected $table ='menu';
     public function __construct() {
         parent::__construct();
     }
-    public function getMenu(){
-        return $this->db->select(  'select * from menu' );
+    
+    public function getParent($id){
+        $customQuery = "";
+        if (isset($id)){
+            $customQuery =" where parent = $id";
+        }else{
+            $customQuery =" where parent = 0";
+        }
+        $query = "select id,menuName from menu ".$customQuery;
+        return $this->db->select($query);
+    }
+    public function getLastOrder(){
+        
+        $query = "select max(menuOrder) as menuOrder from menu ";
+        return $this->db->select($query);
     }
 
 }
