@@ -11,6 +11,9 @@
 
 class User extends Backend {
 
+    protected $module_name = 'user';
+    protected $_title = 'Manage user';
+
     public function _construct() {
         parent::__construct();
     }
@@ -19,7 +22,7 @@ class User extends Backend {
         $this->view->title = "Manage User";
         $this->view->js = array('js/index.js');
         $this->view->userList = $this->model->getUserAll();
-        $this->rendering('user', 'index');
+        $this->rendering('index');
     }
 
     public function edit($id) {
@@ -28,13 +31,14 @@ class User extends Backend {
         $data = $this->model->getUser($id);
         $this->view->userData = $data[0];
         $this->view->userGroup = $this->model->getGroupAll();
-        $this->rendering('user', 'edit');
+        $this->rendering('edit');
     }
+
     public function add() {
         $this->view->js = array('js/add.js');
         $this->view->title = "Add User";
-         $this->view->userGroup = $this->model->getGroupAll();
-        $this->rendering('user', 'add');
+        $this->view->userGroup = $this->model->getGroupAll();
+        $this->rendering('add');
     }
 
     public function editSave($id) {
@@ -52,7 +56,7 @@ class User extends Backend {
 
     public function addSave() {
 
-        $data[0] =  filter_input(INPUT_POST, 'username');
+        $data[0] = filter_input(INPUT_POST, 'username');
         $data[1] = filter_input(INPUT_POST, 'password');
         $data[2] = filter_input(INPUT_POST, 'groupid');
         $data[3] = filter_input(INPUT_POST, 'fname');
@@ -64,8 +68,9 @@ class User extends Backend {
         $success = ($result['ErrorCode'] == '00') ? true : false;
         echo json_encode(array('success' => $success, 'msg' => $result['ErrorMessage']));
     }
+
     public function delUser($id) {
-        $result = $this->model->delUser(array($id,$this->id));
+        $result = $this->model->delUser(array($id, $this->id));
         $success = ($result['ErrorCode'] == '00') ? true : false;
         echo json_encode(array('success' => $success, 'msg' => $result['ErrorMessage']));
     }

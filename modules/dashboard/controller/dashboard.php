@@ -2,26 +2,26 @@
 
 class Dashboard extends Backend {
 
+    protected $module_name = 'dashboard';
+    protected $_title = 'Dashboard';
+
     function __construct() {
         parent::__construct();
-        
+
         $this->view->js = array('dashboard/js/default.js');
     }
-    
-    function index() 
-    {    
+
+    function index() {
         $this->view->title = 'Dashboard';
-        $this->view->msg = 'Welcome '.$this->view->nameuser;
-        
-        $this->rendering('dashboard','index');
+        $this->view->msg = 'Welcome ' . $this->view->nameuser;
+
+        $this->rendering('index');
     }
-    
-    function logout()
-    {
+
+    function logout() {
         Session::destroy();
-        header('location: ' . URL .  'login');
+        header('location: ' . URL . 'login');
         exit;
     }
-    
 
 }

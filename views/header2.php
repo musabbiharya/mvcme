@@ -58,14 +58,15 @@
                             <a  id= 'user' href="<?= URL ?>user" title="Manage User"><i class="fa fa-users fa-3x"></i></a>
                         </li>
                         <li  >
+                            <a  id= 'news' href="<?= URL ?>news" title="News"><i class="fa fa-file-text fa-3x"></i></a>
+                        </li>
+                        <li  >
                             <a   href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
                         </li>	
                         <li  >
                             <a  href="table.html"><i class="fa fa-table fa-3x"></i> Table Examples</a>
                         </li>
-                        <li  >
-                            <a  href="form.html"><i class="fa fa-edit fa-3x"></i> Forms </a>
-                        </li>				
+                        				
 
 
                         <li>
