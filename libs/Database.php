@@ -7,7 +7,7 @@ class Database extends PDO {
     public function __construct($DB_TYPE, $DB_HOST, $DB_NAME, $DB_USER, $DB_PASS) {
         parent::__construct($DB_TYPE . ':host=' . $DB_HOST . ';dbname=' . $DB_NAME, $DB_USER, $DB_PASS);
         $this->log = new Logging();
-        $this->log->lfile('/Users/satria/Sites/mymvc/logfile_' . date('dMY') . '.txt');
+        $this->log->lfile('/Users/satria/Sites/mymvc/log/logfile_' . date('dMY') . '.txt');
         //parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTIONS);
     }
 
