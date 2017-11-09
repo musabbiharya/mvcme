@@ -17,26 +17,15 @@ class Menu extends Backend {
     function __construct() {
         parent::__construct();
     }
-
-    
-
     public function edit($id) {
-        $this->view->js = array('js/edit.js');
-        $this->view->title = "Edit Menu";
-        $data = $this->model->get($id);
-        $result['data'] = $data[0];
-        $result['parent'] = $this->model->getParent();
-        $this->view->data = $result;
-        $this->rendering('edit');
+        $this->view->parent = $this->model->getParent();
+        parent::edit($id);
     }
 
     public function add() {
-        $this->view->js = array('js/add.js');
-        $this->view->title = "Add Menu";
-        $result['parent'] = $this->model->getParent();
-        $result['menuOrder'] = $this->model->getLastOrder()[0];
-        $this->view->data = $result;
-        $this->rendering('add');
+        $this->view->parent = $this->model->getParent();
+        $this->view->order = $this->model->getLastOrder()[0];
+        parent::add();
     }
 
 }

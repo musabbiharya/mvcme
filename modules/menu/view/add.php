@@ -38,7 +38,7 @@
                                 <select class="form-control" name='parent' >
                                     <option value="0" >root</option>
                                     <?php
-                                    foreach ($this->data['parent'] as $group) {
+                                    foreach ($this->parent as $group) {
                                         ?>
 
                                         <option value="<?= $group['id'] ?>" ><?= $group['menuName'] ?></option>
@@ -50,7 +50,7 @@
                             </div>
                             <div id="menuOrder" class="form-group input-group input-group">
                                 <span class="input-group-addon" style="width: 100px">Order</span>
-                                <input class="form-control" name='menuOrder' value="<?=($this->data['menuOrder']['menuOrder'])+1?>"/>
+                                <input class="form-control" name='menuOrder' value="<?=($this->order['menuOrder'])+1?>"/>
                                 <p class="help-block"></p>
                             </div>
                             <div id="link" class="form-group input-group input-group">
