@@ -44,3 +44,6 @@
 [09/Nov/2017:01:06:52] (index) :5 = asdasd
 [09/Nov/2017:01:06:52] (index) :6 = 
 [09/Nov/2017:01:06:52] (index) :7 = 4
+[09/Nov/2017:17:09:15] (index) call deleteUser(:0, :1,@ErrorMessage, @ErrorCode)
+[09/Nov/2017:17:09:15] (index) :0 = ISBN-001122
+[09/Nov/2017:17:09:15] (index) :1 = 4

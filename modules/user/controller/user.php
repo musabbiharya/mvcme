@@ -17,6 +17,7 @@ class User extends Backend {
 
     public function Index() {
         $this->view->title = "Manage User";
+        $this->view->js = array('js/index.js');
         $this->view->userList = $this->model->getUserAll();
         $this->rendering('user', 'index');
     }
@@ -60,6 +61,11 @@ class User extends Backend {
         $data[6] = filter_input(INPUT_POST, 'email');
         $data[7] = $this->id;
         $result = $this->model->addUser($data);
+        $success = ($result['ErrorCode'] == '00') ? true : false;
+        echo json_encode(array('success' => $success, 'msg' => $result['ErrorMessage']));
+    }
+    public function delUser($id) {
+        $result = $this->model->delUser(array($id,$this->id));
         $success = ($result['ErrorCode'] == '00') ? true : false;
         echo json_encode(array('success' => $success, 'msg' => $result['ErrorMessage']));
     }

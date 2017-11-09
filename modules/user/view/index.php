@@ -33,9 +33,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($this->userList as $item) { ?>
+                                        <?php $i=1;foreach ($this->userList as $item) { ?>
                                             <tr class="odd gradeX">
-                                            <td><?=$item['id']?></td>
+                                            <td><?=$i?></td>
                                             <td><?=$item['username']?></td>
                                             <!--<td><?=$item['password']?></td>-->
                                             <td class="center"><?=$item['groupName']?></td>
@@ -44,12 +44,14 @@
 											  <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span></button>
 											  <ul class="dropdown-menu">
 												<li><a href="<?=URL.$this->activeMenu?>/<?=$this->activeMenu?>/edit/<?=$item['id']?>">Edit</a></li>
-												<li><a href="<?=URL.$this->activeMenu?>/<?=$this->activeMenu?>/delete/<?=$item['id']?>">Delete</a></li>
-											  </ul>
+                                                                                                <?php if ($item['id']<> 1){?>
+                                                                                                <li><a href="javascript:void(0)" data-toggle="modal" data-id="<?=$item['id']?>"  data-target="#myModal" class="openModal">Delete</a></li>
+                                                                                                <?php }?>
+                                                                                          </ul>
 											</div></td>
                                             
                                         </tr>
-                                        <?php } ?>
+                                        <?php $i++;} ?>
                                         
                                     </tbody>
                                 </table>

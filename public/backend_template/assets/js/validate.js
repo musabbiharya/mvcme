@@ -13,7 +13,7 @@ jQuery.fn.extend({
             var property;
 
             for (property in objRole) {
-                var elemen= $(this).find('#' + property);
+                var elemen = $(this).find('#' + property);
                 var elementObj = elemen.find(':input');
 //                console.log(elemen);
                 elemen.removeClass('has-error');
@@ -28,7 +28,7 @@ jQuery.fn.extend({
 //                    elementObj.error();
                     if (option.message[property] !== undefined) {
                         elemen.find('.help-block').html(option.message[property]);
-                    }else{
+                    } else {
                         elemen.find('.help-block').html('required');
                     }
 
@@ -36,8 +36,8 @@ jQuery.fn.extend({
                     if (elementObj.val().length < option.minLength[property]) {
                         elemen.error();
 //                        elementObj.error();
-                        elemen.find('.help-block').html('minimal '+option.minLength[property]+' karakter');
-                        
+                        elemen.find('.help-block').html('minimal ' + option.minLength[property] + ' karakter');
+
 
 
                     }
@@ -53,5 +53,26 @@ jQuery.fn.extend({
     },
     success: function () {
         return this.addClass('has-success');
-    }
+    },
+    modalLoad:function (title,classmodal){
+        var dialog = "<div class='modal fade "+classmodal+" ' id='myModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'><\n\
+                    div class='modal-dialog'>\n\
+                    <div class='modal-content'>\n\
+                                        <div class='modal-header'>\n\
+                                            <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>\n\
+                                            <h4 class='modal-title' id='myModalLabel'>"+title+"</h4>\n\
+                                        </div>\n\
+                                        <div class='modal-body'>\n\
+                                           \n\
+                                        </div>\n\
+                                        <div class='modal-footer'>\n\
+                                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>\n\
+                                            <button type='button' class='btn btn-primary' onclick='' data-dismiss='modal'>Save changes</button>\n\
+                                        </div>\n\
+                                    </div>\n\
+                                </div>\n\
+                            </div>";
+        return $(this).append(dialog);
+    
+}
 });

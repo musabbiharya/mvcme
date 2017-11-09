@@ -10,7 +10,7 @@ function splash(spanClass,divClass,msg){
     $('#splash').addClass(divClass).show().delay(8000).fadeOut(400);
 }
 function redirect(){
- setTimeout(function(urlRedirect) {
-  window.location.href = home + urlRedirect;
+ setTimeout(function() {
+  window.location.href = home ;
 }, 2000);   
 }

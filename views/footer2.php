@@ -5,14 +5,14 @@
 <script src="<?php echo BACKEND; ?>assets/js/splash.js"></script>
 <script src="<?php echo BACKEND; ?>assets/js/validate.js"></script>
 <script>
-    var home ='<?php echo URL?>';
+    var home ='<?php echo URL.$this->activeMenu?>/';
     $( document ).ready(function() {
         var a= "<?php echo $this->activeMenu?>";
         
        $("#"+a).addClass('active-menu');
     });
 </script>
-<p style="color:white">(C) MARS framework v_1.0</p>
+<p style="color:white">&copy; MARS framework v_1.0</p>
 </div>
 <!-- /. WRAPPER  -->
 <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->

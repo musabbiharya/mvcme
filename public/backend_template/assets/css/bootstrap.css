@@ -5097,6 +5097,19 @@ button.close {
   -webkit-overflow-scrolling: touch;
   outline: 0;
 }
+.modal.delete {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  transform: translate(-50%, -50%);
+  z-index: 1050;
+  display: none;
+  overflow: auto;
+  /*overflow-y: scroll;*/
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
 .modal.fade .modal-dialog {
   -webkit-transition: -webkit-transform .3s ease-out;
      -moz-transition:    -moz-transform .3s ease-out;

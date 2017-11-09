@@ -42,27 +42,20 @@
                 <div style="color: white;
                      padding: 15px 50px 5px 50px;
                      float: right;
-                     font-size: 16px;"><?php echo $this->nameuser ?> &nbsp; <a href="<?=URL?>dashboard/dashboard/logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+                     font-size: 16px;"><img height="30px"  src="<?php echo BACKEND; ?>assets/img/find_user.png" class="img-circle" /><?php echo $this->nameuser ?> &nbsp; <a href="<?=URL?>dashboard/dashboard/logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
             </nav>   
             <!-- /. NAV TOP  -->
             <nav class="navbar-default navbar-side" role="navigation">
                 <div class="sidebar-collapse">
                     <ul class="nav" id="main-menu">
-                        <li class="text-center">
-                            <img src="<?php echo BACKEND; ?>assets/img/find_user.png" class="user-image img-responsive" 
-                                 />
-
-                        </li>
-
-
                         <li>
-                            <a id="dashboard" href="<?= URL ?>dashboard"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                            <a id="dashboard" href="<?= URL ?>dashboard" title="Dashboard"><i class="fa fa-dashboard fa-3x"></i></a>
                         </li>
                         <li>
-                            <a id='menu' href="<?= URL ?>menu"><i class="fa fa-desktop fa-3x"></i>Manage Menu</a>
+                            <a id='menu' href="<?= URL ?>menu" title="Manage Menu"><i class="fa fa-desktop fa-3x"></i></a>
                         </li>
                         <li>
-                            <a  id= 'user' href="<?= URL ?>user"><i class="fa fa-users fa-3x"></i>Manage User</a>
+                            <a  id= 'user' href="<?= URL ?>user" title="Manage User"><i class="fa fa-users fa-3x"></i></a>
                         </li>
                         <li  >
                             <a   href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>

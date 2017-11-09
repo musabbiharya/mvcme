@@ -37,4 +37,9 @@ class User_Model extends Model {
         return $result[0];
         
     }
+    public function delUser($data) {
+        $result = $this->db->callProcedure('deleteUser',$data,array('ErrorMessage','ErrorCode'));
+        return $result[0];
+        
+    }
 }

@@ -47,7 +47,7 @@ function addUserSubmit() {
             if (data.success) {
 //                alert('asu');
                 splash('glyphicon glyphicon-ok', 'alert alert-success', data.msg); 
-                redirect('user');
+                redirect();
                 
             } else {
                 splash('glyphicon glyphicon-remove', 'alert alert-danger', data.msg);

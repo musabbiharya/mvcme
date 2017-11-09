@@ -5,10 +5,10 @@ define('URL', 'http://localhost/~satria/mymvc/');
 define('LIBS', 'libs/');
 
 define('DB_TYPE', 'mysql');
-define('DB_HOST', '192.168.0.4');
+define('DB_HOST', 'localhost');
 define('DB_NAME', 'empco');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', 'root');
 define('BACKEND', URL.'public/backend_template/');
 
 // The sitewide hashkey, do not change this because its used for passwords!
