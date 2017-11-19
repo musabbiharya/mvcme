@@ -11,6 +11,8 @@
 
 class Page_Model extends Model {
     protected $table ='page';
+     protected $order='order_column';
+    protected $order_sort='asc';
     public function __construct() {
         parent::__construct();
     }

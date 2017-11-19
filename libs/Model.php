@@ -3,10 +3,13 @@
 class Model {
 
     protected $table;
-    protected $parent=null;
+    protected $parent = null;
     protected $joiner;
     protected $joincolumn;
-            function __construct() {
+    protected $order;
+    protected $order_sort;
+
+    function __construct() {
         $this->db = new Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
         $this->log = new Logging();
         $this->log->lfile('/Users/satria/Sites/tasklist/log/logfile_' . date('dMY') . '.txt');
@@ -35,22 +38,19 @@ class Model {
         }
         $queryJoin = "";
         $columnJoin = "";
-        if($this->parent!==NULL){
+        $columnOder = "";
+        if ($this->parent !== NULL) {
             foreach ($this->joincolumn as $key => $value) {
-                $columnJoin .= ",$this->parent.$value as $key" ;
+                $columnJoin .= ",$this->parent.$value as $key";
             }
-            
-            $queryJoin ="join $this->parent  on $this->joiner " ;
+
+            $queryJoin = "join $this->parent  on $this->joiner ";
         }
-        $query = "select $this->table.* $columnJoin from $this->table  $queryJoin " . $customQuery;
+        if ($this->order !== NULL){
+            $columnOder = "order by $this->table.$this->order $this->order_sort";
+        }
+        $query = "select $this->table.* $columnJoin from $this->table  $queryJoin " . $customQuery ." ".$columnOder;
         return $this->db->select($query);
     }
-
-    
-
-    
-
-    
-    
 
 }

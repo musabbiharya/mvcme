@@ -24,7 +24,7 @@ class User_Model extends Model {
     }
 
     public function getGroupAll() {
-        return $this->db->select("select * from groupStaff ");
+        return $this->db->select("select * from groupstaff ");
     }
 
     public function editUser($data) {
@@ -45,10 +45,10 @@ class User_Model extends Model {
     public function getBelow($data) {
         $user = $this->db->select("select groupid from users where id= $data ");
         
-        $group = $this->db->select("select id,parent from groupStaff where parent = ".$user[0]['groupid']);
+        $group = $this->db->select("select id,parent from groupstaff where parent = ".$user[0]['groupid']);
         foreach ($group as $value) {
             
-            $groupchild = $this->db->select("select id,parent from groupStaff where parent = ".$value['id']);
+            $groupchild = $this->db->select("select id,parent from groupstaff where parent = ".$value['id']);
             foreach ($groupchild as $valuegc) {
                 array_push($group, $valuegc);
                 

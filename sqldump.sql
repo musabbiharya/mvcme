@@ -150,7 +150,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (4,1,'asdasdasd','<h1><span class=\"marker\"><em><strong>asdasd </strong></em></span></h1>\n\n<p><strong>asdasdasdasd </strong></p>\n\n<p><strong>asdasdasdasd</strong></p>\n\n<p>asdasdasdasdasdasd</p>\n\n<p><img alt=\"\" src=\"http://localhost/~satria/mymvc/upload/images/Screen%20Shot%202017-11-18%20at%2010_53_48%20PM(2).png\" style=\"height:594px; width:1029px\" /></p>\n','2017-11-19 02:12:05',1),(5,1,'asdasdas','asdasdasd','2017-11-18 09:07:37',1),(6,1,'testlah','<h1><strong>asdasdasdasd</strong></h1>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>\n\n<p>asdasdasdasdasdmabsdmasd</p>\n\n<p>asdbamsdnbasdhvasd</p>\n\n<p>asdvajsdknkasd</p>\n\n<p>lajksdbaks,dnas</p>\n\n<p>abshdmnbas,d.as</p>\n\n<p><img alt=\"\" src=\"http://localhost/~satria/mymvc/upload/images/Screen%20Shot%202017-11-18%20at%2010_53_48%20PM.png\" style=\"height:594px; width:1029px\" /></p>\n','2017-11-19 02:04:14',1);
+INSERT INTO `news` VALUES (4,1,'asdasdasd','<h1><span class=\"marker\"><em><strong>asdasd </strong></em></span></h1>\n\n<p><strong>asdasdasdasd </strong></p>\n\n<p><strong>asdasdasdasd</strong></p>\n\n<p>asdasdasdasdasdasd</p>\n\n<p><img alt=\"\" src=\"http://localhost/~satria/mymvc/upload/images/Screen%20Shot%202017-11-18%20at%2010_53_48%20PM(3).png\" style=\"height:594px; width:1029px\" /></p>\n','2017-11-19 02:26:37',1),(5,1,'asdasdas','asdasdasd','2017-11-18 09:07:37',1),(6,1,'testlah','<h1><strong>asdasdasdasd</strong></h1>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>\n\n<p>asdasdasdasdasdmabsdmasd</p>\n\n<p>asdbamsdnbasdhvasd</p>\n\n<p>asdvajsdknkasd</p>\n\n<p>lajksdbaks,dnas</p>\n\n<p>abshdmnbas,d.as</p>\n\n<p><img alt=\"\" src=\"http://localhost/~satria/mymvc/upload/images/Screen%20Shot%202017-11-18%20at%2010_53_48%20PM.png\" style=\"height:594px; width:1029px\" /></p>\n','2017-11-19 02:04:14',1);
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -167,6 +167,7 @@ CREATE TABLE `page` (
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `createdby` int(11) NOT NULL,
   `parent` int(11) NOT NULL,
+  `order_column` int(11) NOT NULL,
   `pclass` varchar(45) DEFAULT NULL,
   `descript` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -179,7 +180,7 @@ CREATE TABLE `page` (
 
 LOCK TABLES `page` WRITE;
 /*!40000 ALTER TABLE `page` DISABLE KEYS */;
-INSERT INTO `page` VALUES (1,'dashboard','2017-11-18 12:08:23',1,0,'fa-dashboard','Dashboard'),(2,'page','2017-11-09 22:57:03',1,0,'fa-file','Manage page'),(3,'group','2017-11-10 13:33:59',1,0,'fa-group','Manage Group'),(4,'user','2017-11-09 23:33:27',1,0,'fa-user-md','Manage User'),(10,'news','2017-11-18 07:45:50',1,0,'fa-file-text-o','News'),(11,'category','2017-11-18 07:56:39',1,0,'fa-tasks','Category');
+INSERT INTO `page` VALUES (1,'dashboard','2017-11-19 03:13:26',1,0,1,'fa-dashboard','Dashboard'),(2,'page','2017-11-19 03:13:29',1,0,2,'fa-file','Manage page'),(3,'group','2017-11-19 03:13:37',1,0,3,'fa-group','Manage Group'),(4,'user','2017-11-19 03:13:39',1,0,4,'fa-user-md','Manage User'),(10,'news','2017-11-19 03:13:46',1,0,6,'fa-file-text-o','News'),(11,'category','2017-11-19 03:13:43',1,0,5,'fa-tasks','Category');
 /*!40000 ALTER TABLE `page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -287,6 +288,167 @@ INSERT INTO `users` VALUES (1,'admin','21232f297a57a5a743894a0e4a801fc3','2017-1
 UNLOCK TABLES;
 
 --
+-- Dumping routines for database 'empco'
+--
+/*!50003 DROP PROCEDURE IF EXISTS `addUser` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `addUser`(in iUserName varchar(30), 
+in iPassword varchar(200),
+in igroupid int, in ifname varchar(50), in ilname varchar (50), in iaddress text, in iemail varchar(200),in iCreateBy int,
+out ErrorMessage varchar(200), out ErrorCode int )
+BEGIN
+declare iuserid INT(11);
+declare counting INT(11);
+declare effect_profile INT(11);
+
+SELECT count(*) into counting FROM
+    users
+WHERE
+    username = iUserName;
+    
+if counting = 0 then
+	insert into users (username,password,createDate,groupid,createBy) values (iUserName,md5(iPassword),NOW(),igroupid,iCreateBy );
+	set iuserid= LAST_INSERT_ID();
+		if iuserid is not null then
+			insert into userprofile values(iuserid,ifname,ilname,iaddress,iemail);
+			set effect_profile = ROW_COUNT();
+		end if;
+		if effect_profile<>0 then
+			set ErrorCode = 00;
+			set errorMessage = 'Insert User Success';
+		else
+			set ErrorCode = 10;
+			set errorMessage = 'Insert User Failed';
+		end if;
+else
+	set ErrorCode = 11;
+	set errorMessage = 'User Duplicate Found';
+end if;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `deleteUser` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteUser`(in iuserid int ,
+in iCreateBy int,
+out ErrorMessage varchar(200), out ErrorCode int)
+BEGIN
+declare counting int;
+declare userid int;
+declare effect int;
+declare msg varchar(200);
+
+SELECT 
+    COUNT(id)
+INTO counting FROM
+    users
+WHERE
+    id = iuserid;
+if counting <> 0 then
+delete from users where id = iuserid;
+delete from userprofile where userid = iuserid;
+set effect = ROW_COUNT();
+else
+set ErrorCode = 99;
+set errorMessage = 'No Data Found';
+insert into userlog (iduser,UpdateDate,UpdateBy,message,link) values(iuserid,now(),iCreateBy,errorMessage,'');
+end if;
+
+if effect<>0 then
+set ErrorCode = 00;
+set errorMessage = 'Deleted users success';
+insert into userlog (iduser,UpdateDate,UpdateBy,message,link) values(iuserid,now(),iCreateBy,errorMessage,'');
+else
+set ErrorCode = 12;
+set errorMessage = 'Deleted users Failed';
+insert into userlog (iduser,UpdateDate,UpdateBy,message,link) values(iuserid,now(),iCreateBy,errorMessage,'');
+end if;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `editUser` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `editUser`(in iuserid int ,in iUserName varchar(30), 
+in iGroupId int, in ifname varchar(200),in ilname varchar(200),
+in iCreateBy int,
+out ErrorMessage varchar(200), out ErrorCode varchar(20) )
+BEGIN
+declare counting int;
+declare userid int;
+declare effect_user int;
+declare effect_profile int;
+declare msg varchar(200);
+
+SELECT 
+    COUNT(id)
+INTO counting FROM
+    users
+WHERE
+    id = iuserid;
+if counting <> 0 then
+select id into userid from users where id = iuserid;
+
+update users  set username = iUserName, groupid=iGroupId where id =iuserid ;
+set effect_user = ROW_COUNT();
+update userprofile  set fname = ifname,lname = ilname where userid =iuserid ;
+set effect_profile = ROW_COUNT();
+
+set msg = 'Update username And Password';
+
+else
+set ErrorCode = '99';
+set errorMessage = 'No Data Found';
+insert into userlog (iduser,UpdateDate,UpdateBy,message,link) values(iuserid,now(),iCreateBy,errorMessage,'');
+end if; 
+
+if effect_user<>0 or effect_profile<>0 then
+set ErrorCode = '00';
+set errorMessage = 'Update user Success ';
+insert into userlog (iduser,UpdateDate,UpdateBy,message,link) values(iuserid,now(),iCreateBy,errorMessage,'');
+else
+set ErrorCode = '88';
+set errorMessage = 'No Change detected';
+insert into userlog (iduser,UpdateDate,UpdateBy,message,link) values(iuserid,now(),iCreateBy,errorMessage,'');
+end if;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
 -- Final view structure for view `user`
 --
 
@@ -313,4 +475,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-19  9:21:15
+-- Dump completed on 2017-11-19 10:30:16

@@ -10,12 +10,12 @@
 */
 
 class Group_Model extends Model {
-    protected $table ='groupStaff';
+    protected $table ='groupstaff';
     public function __construct() {
         parent::__construct();
     }
     public function getRole($id) {
-        $strquery1 = "SELECT role FROM groupStaff WHERE id = $id";
+        $strquery1 = "SELECT role FROM groupstaff WHERE id = $id";
         $query1 = $this->db->select($strquery1);
 
         $role = explode('|', $query1[0]['role']);

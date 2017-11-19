@@ -20,7 +20,7 @@ class Backend_Model extends Model
         return $data;
     }
     public function getPage($page){
-        $data = $this->db->select("SELECT * from page where page='$page'");
+        $data = $this->db->select("SELECT * from page where page='$page' order by order_column asc");
         
         return $data;
     }
@@ -31,15 +31,15 @@ class Backend_Model extends Model
         $query = $this->db->select($strquery);
         $idgroup = $query[0]['groupid'];
 
-        $strquery1 = "SELECT role FROM groupStaff WHERE id = '$idgroup'";
+        $strquery1 = "SELECT role FROM groupstaff WHERE id = '$idgroup'";
         $query1 = $this->db->select($strquery1);
 
         $role = explode('|', $query1[0]['role']);
         $inmenu = implode(',', $role);
-        $strquery2 = "SELECT * FROM page WHERE id in ($inmenu) and parent=0 order by id";
+        $strquery2 = "SELECT * FROM page WHERE id in ($inmenu) and parent=0 order by order_column asc";
         $query2 = $this->db->select($strquery2);
         foreach ($query2 as $key=> $value) {
-            $strquery3 = "SELECT * FROM page WHERE id in ($inmenu) and parent=$value[id] order by id";
+            $strquery3 = "SELECT * FROM page WHERE id in ($inmenu) and parent=$value[id] order by order_column asc";
             $query3 = $this->db->select($strquery3);
             if(count($query3)>0){
                $query2[$key]['child']= $query3;
@@ -54,7 +54,7 @@ class Backend_Model extends Model
             $query = $this->db->select($strquery);
             $idgroup = $query[0]['groupid'];
 
-            $strquery1 = "SELECT role FROM groupStaff WHERE id = '$idgroup'";
+            $strquery1 = "SELECT role FROM groupstaff WHERE id = '$idgroup'";
             $query1 = $this->db->select($strquery1);
 
             $role = explode('|', $query1[0]['role']);
