@@ -125,13 +125,13 @@ INSERT INTO `departement` VALUES (1,'ICT','IT support For JICT','2017-11-19 13:4
 UNLOCK TABLES;
 
 --
--- Table structure for table `groupStaff`
+-- Table structure for table `groupstaff`
 --
 
-DROP TABLE IF EXISTS `groupStaff`;
+DROP TABLE IF EXISTS `groupstaff`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `groupStaff` (
+CREATE TABLE `groupstaff` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `groupName` varchar(45) NOT NULL,
   `created` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -143,13 +143,13 @@ CREATE TABLE `groupStaff` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `groupStaff`
+-- Dumping data for table `groupstaff`
 --
 
-LOCK TABLES `groupStaff` WRITE;
-/*!40000 ALTER TABLE `groupStaff` DISABLE KEYS */;
-INSERT INTO `groupStaff` VALUES (1,'Administrator','2017-11-19 14:07:33',1,'1|2|3|4|11|10|12|13|14|15',99);
-/*!40000 ALTER TABLE `groupStaff` ENABLE KEYS */;
+LOCK TABLES `groupstaff` WRITE;
+/*!40000 ALTER TABLE `groupstaff` DISABLE KEYS */;
+INSERT INTO `groupstaff` VALUES (1,'Administrator','2017-11-19 14:07:33',1,'1|2|3|4|11|10|12|13|14|15',99);
+/*!40000 ALTER TABLE `groupstaff` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -194,6 +194,7 @@ CREATE TABLE `news` (
   `catid` int(11) NOT NULL,
   `title` varchar(45) NOT NULL,
   `isi` text,
+  `publish` tinyint(1) NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `createdby` int(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -206,7 +207,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (4,1,'asdasdasd','<h1><span class=\"marker\"><em><strong>asdasd </strong></em></span></h1>\n\n<p><strong>asdasdasdasd </strong></p>\n\n<p><strong>asdasdasdasd</strong></p>\n\n<p>asdasdasdasdasdasd</p>\n\n<p><img alt=\"\" src=\"http://localhost/~satria/mymvc/upload/images/Screen%20Shot%202017-11-18%20at%2010_53_48%20PM(3).png\" style=\"height:594px; width:1029px\" /></p>\n','2017-11-19 02:26:37',1),(5,1,'asdasdas','asdasdasd','2017-11-18 09:07:37',1),(6,1,'testlah','<h1><strong>asdasdasdasd</strong></h1>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>\n\n<p>asdasdasdasdasdmabsdmasd</p>\n\n<p>asdbamsdnbasdhvasd</p>\n\n<p>asdvajsdknkasd</p>\n\n<p>lajksdbaks,dnas</p>\n\n<p>abshdmnbas,d.as</p>\n\n<p><img alt=\"\" src=\"http://localhost/~satria/mymvc/upload/images/Screen%20Shot%202017-11-18%20at%2010_53_48%20PM.png\" style=\"height:594px; width:1029px\" /></p>\n','2017-11-19 02:04:14',1);
+INSERT INTO `news` VALUES (4,1,'asdasdasd','<h1><span class=\"marker\"><em><strong>asdasd </strong></em></span></h1>\n\n<p><strong>asdasdasdasd </strong></p>\n\n<p><strong>asdasdasdasd</strong></p>\n\n<p>asdasdasdasdasdasd</p>\n\n<p><img alt=\"\" src=\"http://localhost/~satria/mymvc/upload/images/Screen%20Shot%202017-11-18%20at%2010_53_48%20PM(3).png\" style=\"height:594px; width:1029px\" /></p>\n',0,'2017-11-19 02:26:37',1),(5,1,'asdasdas','asdasdasd',0,'2017-11-18 09:07:37',1),(6,1,'testlah','<h1><strong>asdasdasdasd</strong></h1>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>\n\n<p>asdasdasdasdasdmabsdmasd</p>\n\n<p>asdbamsdnbasdhvasd</p>\n\n<p>asdvajsdknkasd</p>\n\n<p>lajksdbaks,dnas</p>\n\n<p>abshdmnbas,d.as</p>\n\n<p><img alt=\"\" src=\"http://localhost/~satria/mymvc/upload/images/Screen%20Shot%202017-11-18%20at%2010_53_48%20PM.png\" style=\"height:594px; width:1029px\" /></p>\n',0,'2017-11-19 02:04:14',1);
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -531,4 +532,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-19 21:33:37
+-- Dump completed on 2017-11-19 21:41:09
