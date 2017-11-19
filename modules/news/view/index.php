@@ -24,7 +24,8 @@
                             <tr>
                                 <th>No</th>
                                 <th>Judul</th>
-                                <th>Isi</th>
+                                <th>Kategori</th>
+<!--                                <th>Isi</th>-->
                                 <th>Created</th>
                                 <th>By</th>
                                  <th>Operation</th>
@@ -38,7 +39,8 @@
                                 <tr class="odd gradeX">
                                     <td><?= $i ?></td>
                                     <td><?= $item['title'] ?></td>
-                                    <td><?= $item['isi'] ?></td>
+                                    <td><?= $item['category'] ?></td>
+<!--                                    <td><?= $item['isi'] ?></td>-->
                                     <td class="center"><?= $item['created'] ?></td>
                                     <td class="center"><?= $item['createdby'] ?></td>
                                     <td><div class="btn-group">

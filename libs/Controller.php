@@ -25,4 +25,27 @@ class Controller {
         $this->model = new $modelName();
     }
 
+    public function loadCustomModel($name, $modulename, $modelPath = 'models/') {
+
+        if (!empty($modulename)) {
+            $path = 'modules/' . $modulename . '/model/' . $name . '_model.php';
+        } else {
+            $path = $modelPath . $name . '_model.php';
+        }
+        require $path;
+
+        $modelName = $name . '_Model';
+        $objname = strtolower($modelName);
+        $this->$objname = new $modelName();
+    }
+
+    function removeElementArray($array, $key, $value) {
+        foreach ($array as $subKey => $subArray) {
+            if ($subArray[$key] !== $value) {
+                unset($array[$subKey]);
+            }
+        }
+        return $array;
+    }
+    
 }

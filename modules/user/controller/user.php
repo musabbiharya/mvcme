@@ -74,5 +74,6 @@ class User extends Backend {
         $success = ($result['ErrorCode'] == '00') ? true : false;
         echo json_encode(array('success' => $success, 'msg' => $result['ErrorMessage']));
     }
+   
 
 }

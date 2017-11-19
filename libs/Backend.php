@@ -22,6 +22,12 @@ class Backend extends Controller{
         $data = $this->model->getCompany();
         $this->view->companyLogo = $data[3]['description'];
         $this->view->companyName = $data[0]['description'];
+        $this->pageId = $this->model->getPage($this->module_name)[0]['id'];
+        $this->view->Navbar = $this->model->getMenu($this->id);
+        if (!$this->model->is_privileged($this->id, $this->pageId)) {
+            session_destroy();
+            header('location:'.URL.'login');
+        }
         
         
     }
@@ -48,17 +54,17 @@ class Backend extends Controller{
     }
     
     public function add() {
-        $this->view->js = array('js/add.js');
+        $this->view->js = array('js/detail.js');
         $this->view->title = "Add ".$this->module_name;
-        $this->rendering('add');
+        $this->rendering('detail');
     }
     public function edit($id) {
-        $this->view->js = array('js/edit.js');
+        $this->view->js = array('js/detail.js');
         $this->view->title = "Edit ".$this->module_name;
         $data = $this->model->get($id);
         $result['data'] = $data[0];
         $this->view->data = $result;
-        $this->rendering('edit');
+        $this->rendering('detail');
     }
     public function save($id) {
         $data = filter_input_array(INPUT_POST);
@@ -72,4 +78,5 @@ class Backend extends Controller{
         echo json_encode(array('success' => $success, 'msg' => $msg));
 //        var_dump($data);
     }
+    
 }

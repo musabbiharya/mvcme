@@ -30,7 +30,7 @@
                                     </div>
                                     <div id="password" class="form-group input-group input-group">
                                         <span class="input-group-addon" style="width: 100px">Password</span>
-                                        <input type="password" class="form-control" name='password' value=""/>
+                                        <input type="password" class="form-control" name='password' value="Jict2017"/>
                                         <p class="help-block"></p>
                                     </div>
                                     

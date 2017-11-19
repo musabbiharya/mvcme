@@ -11,6 +11,9 @@
 
 class News_Model extends Model {
     protected $table ='news';
+    protected $parent='category';
+    protected $joiner = 'news.catid=category.id';
+    protected $joincolumn =array('category'=>'category');
     public function __construct() {
         parent::__construct();
     }

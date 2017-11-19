@@ -32,7 +32,7 @@ function addUserSubmit() {
 
         }
     });
-    console.log(a);
+//    console.log(a);
     if(a){
         var data = $("#userForm").serialize();
 //    alert($("#userForm").attr('action'));
