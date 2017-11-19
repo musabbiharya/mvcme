@@ -22,12 +22,12 @@
 
                         <form role="form" id="dataForm"  action="<?= URL . $this->activeMenu ?>/<?= $this->activeMenu ?>/save/<?= $this->data['data']['id'] ?>">
                             <div class="form-group input-group input-group">
-                                <span class="input-group-addon" style="width: 100px">Menu Name</span>
+                                <span class="input-group-addon" style="width: 100px">Page Name</span>
                                 <input class="form-control" name='page' value="<?= $this->data['data']['page'] ?>"/>
                                 <p class="help-block"></p>
                             </div>
                             <div class="form-group input-group input-group">
-                                <span class="input-group-addon" style="width: 100px">Menu Name</span>
+                                <span class="input-group-addon" style="width: 100px">Description</span>
                                 <input class="form-control" name='descript' value="<?= $this->data['data']['descript'] ?>"/>
                                 <p class="help-block"></p>
                             </div>
@@ -48,7 +48,12 @@
                                 </select>
                             </div>
                             <div class="form-group input-group input-group">
-                                <span class="input-group-addon" style="width: 100px">Desc</span>
+                                <span class="input-group-addon" style="width: 100px">Order</span>
+                                <input class="form-control" name='order_column' value="<?= ($this->data['data']['order_column']!==NULL)?$this->data['data']['order_column']:$this->order[0]['m_order_column']+1 ?>"/>
+                                <p class="help-block"></p>
+                            </div>
+                            <div class="form-group input-group input-group">
+                                <span class="input-group-addon" style="width: 100px">pclass</span>
                                 <input class="form-control" name='pclass' value="<?= $this->data['data']['pclass'] ?>"/>
                                 <p class="help-block"></p>
                             </div>

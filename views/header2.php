@@ -32,7 +32,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?= URL ?>"><?php echo $this->companyLogo ?></a> 
+                    <a class="navbar-brand" href="<?= URL ?>"><img style="height: 40px" src="<?php echo URL.$this->companyLogo ?>"/></a> 
                 </div>
                 <div style="color: white;
                      padding: 15px 50px 5px 50px;

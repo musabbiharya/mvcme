@@ -17,11 +17,13 @@ class Page extends Backend{
     }
     public function edit($id) {
         $this->view->parent = $this->model->getParent();
+        $this->view->order = $this->model->getLastOrder();
         parent::edit($id);
     }
 
     public function add() {
         $this->view->parent = $this->model->getParent();
+        $this->view->order = $this->model->getLastOrder();
         parent::add();
     }
     

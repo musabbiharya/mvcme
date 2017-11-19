@@ -27,5 +27,9 @@ class Page_Model extends Model {
         $query = "select id,page from page ".$customQuery;
         return $this->db->select($query);
     }
+    public function getLastOrder() {
+         $query = "select max(order_column) as m_order_column from $this->table ";
+        return $this->db->select($query);
+    }
 
 }
