@@ -16,6 +16,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `career`
+--
+
+DROP TABLE IF EXISTS `career`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `career` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `deptid` int(11) NOT NULL,
+  `career` varchar(50) NOT NULL,
+  `jobdesc` text,
+  `publish` tinyint(1) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createdby` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `career`
+--
+
+LOCK TABLES `career` WRITE;
+/*!40000 ALTER TABLE `career` DISABLE KEYS */;
+INSERT INTO `career` VALUES (1,1,'test','<p>google</p>\n',0,'2017-11-19 14:29:18',1);
+/*!40000 ALTER TABLE `career` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `category`
 --
 
@@ -64,8 +93,35 @@ CREATE TABLE `company_setting` (
 
 LOCK TABLES `company_setting` WRITE;
 /*!40000 ALTER TABLE `company_setting` DISABLE KEYS */;
-INSERT INTO `company_setting` VALUES (1,'companyName','Empco'),(2,'companyAddress',NULL),(3,'companyContact',NULL),(4,'companyLogo','Empco');
+INSERT INTO `company_setting` VALUES (1,'companyName','Empco'),(2,'companyAddress',NULL),(3,'companyContact',NULL),(4,'companyLogo','public/images/logo.png');
 /*!40000 ALTER TABLE `company_setting` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `departement`
+--
+
+DROP TABLE IF EXISTS `departement`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `departement` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `departement` varchar(50) NOT NULL,
+  `description` varchar(50) DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createdby` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `departement`
+--
+
+LOCK TABLES `departement` WRITE;
+/*!40000 ALTER TABLE `departement` DISABLE KEYS */;
+INSERT INTO `departement` VALUES (1,'ICT','IT support For JICT','2017-11-19 13:40:38',1);
+/*!40000 ALTER TABLE `departement` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -92,7 +148,7 @@ CREATE TABLE `groupStaff` (
 
 LOCK TABLES `groupStaff` WRITE;
 /*!40000 ALTER TABLE `groupStaff` DISABLE KEYS */;
-INSERT INTO `groupStaff` VALUES (1,'Administrator','2017-11-18 09:15:05',1,'1|2|3|4|10|11',99);
+INSERT INTO `groupStaff` VALUES (1,'Administrator','2017-11-19 14:07:33',1,'1|2|3|4|11|10|12|13|14|15',99);
 /*!40000 ALTER TABLE `groupStaff` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +227,7 @@ CREATE TABLE `page` (
   `pclass` varchar(45) DEFAULT NULL,
   `descript` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,7 +236,7 @@ CREATE TABLE `page` (
 
 LOCK TABLES `page` WRITE;
 /*!40000 ALTER TABLE `page` DISABLE KEYS */;
-INSERT INTO `page` VALUES (1,'dashboard','2017-11-19 03:13:26',1,0,1,'fa-dashboard','Dashboard'),(2,'page','2017-11-19 03:13:29',1,0,2,'fa-file','Manage page'),(3,'group','2017-11-19 03:13:37',1,0,3,'fa-group','Manage Group'),(4,'user','2017-11-19 03:13:39',1,0,4,'fa-user-md','Manage User'),(10,'news','2017-11-19 03:13:46',1,0,6,'fa-file-text-o','News'),(11,'category','2017-11-19 03:13:43',1,0,5,'fa-tasks','Category');
+INSERT INTO `page` VALUES (1,'dashboard','2017-11-19 03:13:26',1,0,1,'fa-dashboard','Dashboard'),(2,'page','2017-11-19 03:13:29',1,0,2,'fa-file','Manage page'),(3,'group','2017-11-19 03:13:37',1,0,3,'fa-group','Manage Group'),(4,'user','2017-11-19 03:13:39',1,0,4,'fa-user-md','Manage User'),(10,'news','2017-11-19 13:26:12',1,12,6,'fa-file-text-o','News'),(11,'category','2017-11-19 13:26:01',1,12,5,'fa-tasks','Categories'),(12,'managenews','2017-11-19 13:25:44',1,0,6,'fa-list-alt','Manage News'),(13,'Office','2017-11-19 13:35:29',1,0,7,'fa-briefcase','Office Tools'),(14,'departement','2017-11-19 13:37:15',1,13,8,'fa-desktop','Manage Departement'),(15,'career','2017-11-19 14:07:26',1,13,9,'fa-briefcase','Career Posting');
 /*!40000 ALTER TABLE `page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -475,4 +531,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-19 10:30:16
+-- Dump completed on 2017-11-19 21:33:37

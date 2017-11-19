@@ -8,7 +8,7 @@
  * Jakarta International Container Terminal (JICT);
  */
 ?>
-
+	
 
 <div class="row">
     <div class="col-md-12">
@@ -22,43 +22,44 @@
                     <div class="col-md-6">
 
                         <form role="form" id="dataForm"  action="<?= URL . $this->activeMenu ?>/<?= $this->activeMenu ?>/save/<?= $this->data['data']['id'] ?>">
-                            <div id="title" class="form-group input-group input-group">
-                                <span class="input-group-addon" style="width: 100px">Judul</span>
-                                <input class="form-control" name='title' value="<?= $this->data['data']['title'] ?>"/>
-                                <p class="help-block"></p>
-                            </div>
                             <div class="form-group input-group input-group">
                                 <span class="input-group-addon" style="width: 100px">Kategory</span>
-                                <select class="form-control" name='catid' >
+                                <select class="form-control" name='deptid' >
                                     <?php
                                     foreach ($this->parent as $group) {
-                                        $selected = ($group['id'] == $this->data['data']['catid']) ? 'selected' : '';
+                                        $selected = ($group['id'] == $this->data['data']['deptid']) ? 'selected' : '';
                                         ?>
 
-                                        <option value="<?= $group['id'] ?>" <?= $selected ?>><?= $group['category'] ?></option>
+                                        <option value="<?= $group['id'] ?>" <?= $selected ?>><?= $group['departement'] ?></option>
                                         <?php
                                     }
                                     ?>
 
                                 </select>
                             </div>
-
+                            <div id="career" class="form-group input-group input-group">
+                                <span class="input-group-addon" style="width: 100px">Title</span>
+                                <input class="form-control" name='career' value="<?= $this->data['data']['career'] ?>"/>
+                                <p class="help-block"></p>
+                            </div>
+                            
+                            
                             <!--<div id="isi" class="form-group input-group input-group">-->
-                            <span class="input-group-addon" style="width: 100px">Isi</span>
-                            <?php echo $this->ckeditor->editor('isi', $this->data['data']['isi']); ?>
-
+                                <span class="input-group-addon" style="width: 100px">Job Description and Skill</span>
+                                <?php echo $this->ckeditor->editor('jobdesc',$this->data['data']['jobdesc']);?>
+                               <div class="checkbox">
+                                        <label>
+                                            <input id ="publish" type="checkbox" name="publish" <?=($this->data['data']['publish']) ? 'checked' : '';?> />Publish
+                                        </label>
+                                    </div>
                             <!--</div>-->
 
-                            <div class="checkbox">
-                                <label>
-                                    <input id ="publish" type="checkbox" name="publish" <?= ($this->data['data']['publish']) ? 'checked' : ''; ?> />Publish
-                                </label>
-                            </div>
+
                             <button  type="button" class="btn btn-success button" onclick="simpan()" >Submit</button>
                             <button type="reset" class="btn btn-primary">Reset</button>
 
                         </form>
-
+                        
                     </div>
                 </div>
             </div>

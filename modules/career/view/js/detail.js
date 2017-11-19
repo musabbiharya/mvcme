@@ -28,13 +28,14 @@ function simpan() {
     var a =false;
      a= $('#dataForm').validasi({
          role:{
-             title:'required'
+             career:'required'
          }
      });
 //    console.log(a);
     if(a){
         var data = objectifyForm($("#dataForm").serializeArray());
-        data.isi= CKEDITOR.instances.isi.getData();
+        
+        data.jobdesc= CKEDITOR.instances.jobdesc.getData();
         
 //    alert($("#userForm").attr('action'));
     $('#splash').removeClass();

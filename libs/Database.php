@@ -38,11 +38,13 @@ class Database extends PDO {
 
         $fieldNames = implode('`, `', array_keys($data));
         $fieldValues = ':' . implode(', :', array_keys($data));
-
-        $sth = $this->prepare("INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)");
+        $query ="INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)";
+        $this->log->lwrite($query);
+        $sth = $this->prepare($query);
 
         foreach ($data as $key => $value) {
             $sth->bindValue(":$key", $value);
+            $this->log->lwrite($key ." : ".$value);
         }
 
         $sth->execute();

@@ -19,7 +19,7 @@ $('#splash').removeClass();
     $('#splash span').removeClass();
     $.ajax({
         type: "POST",
-        url: home+'news/del/'+id,
+        url: home+'group/del/'+id,
         data: id,
         success: function (data) {
             if (data.success) {

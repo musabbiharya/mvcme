@@ -5,7 +5,7 @@
  */
 
 
-$('body').modalLoad('Delete Departement','delete');
+$('body').modalLoad('Delete Career','delete');
 $(document).on("click", ".openModal", function () {
      var data = $(this).data('id');
      $(".modal-footer .btn-primary").attr('onclick',"del('"+data+"')");
@@ -19,7 +19,7 @@ $('#splash').removeClass();
     $('#splash span').removeClass();
     $.ajax({
         type: "POST",
-        url: home+'departement/del/'+id,
+        url: home+'career/del/'+id,
         data: id,
         success: function (data) {
             if (data.success) {

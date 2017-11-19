@@ -23,41 +23,39 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Judul</th>
-                                <th>Kategori</th>
+                                <th>Departement</th>
+                                <th>Lowongan</th>
                                 <th>Publish</th>
                                 <th>Created</th>
                                 <th>By</th>
-                                <th>Operation</th>
-
+                                 <th>Operation</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                            $i = 1;
+                            <?php $i = 1;
                             foreach ($this->data['data'] as $item) {
                                 ?>
                                 <tr class="odd gradeX">
                                     <td><?= $i ?></td>
-                                    <td><?= $item['title'] ?></td>
-                                    <td><?= $item['category'] ?></td>
-                                    <td><?= ($item['publish']) ? $item['publish'] : '' ?></td>
+                                    <td><?= $item['departement'] ?></td>
+                                    <td><?= $item['career'] ?></td>
+                                    <td><?= ($item['publish'])? $item['publish']:''?></td>
                                     <td class="center"><?= $item['created'] ?></td>
                                     <td class="center"><?= $item['createdby'] ?></td>
                                     <td><div class="btn-group">
-                                            <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="<?= URL . $this->activeMenu ?>/<?= $this->activeMenu ?>/edit/<?= $item['id'] ?>">Edit</a></li>
-
-                                                <li><a href="javascript:void(0)" data-toggle="modal" data-id="<?= $item['id'] ?>"  data-target="#myModal" class="openModal">Delete</a></li>
-
-                                            </ul>
-                                        </div></td>
+											  <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span></button>
+											  <ul class="dropdown-menu">
+												<li><a href="<?=URL.$this->activeMenu?>/<?=$this->activeMenu?>/edit/<?=$item['id']?>">Edit</a></li>
+                                                                                                
+                                                                                                <li><a href="javascript:void(0)" data-toggle="modal" data-id="<?=$item['id']?>"  data-target="#myModal" class="openModal">Delete</a></li>
+                                                                                                
+                                                                                          </ul>
+											</div></td>
 
                                 </tr>
                                 <?php $i++;
-                            }
-                            ?>
+                            } ?>
 
                         </tbody>
                     </table>
