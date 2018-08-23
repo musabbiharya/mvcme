@@ -111,7 +111,7 @@ class Bootstrap {
         if (file_exists($file)) {
             require $file;
             $this->_controller = new $this->_url[1];
-            $this->_controller->loadModel($this->_url[1],$this->_url[1]);
+            $this->_controller->loadModel($this->_url[1],$this->_url[0]);
         } else {
             $this->_error('Page does not exist');
             return false;

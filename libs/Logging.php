@@ -34,7 +34,7 @@ class Logging {
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             $log_file_default = 'c:/php/logfile.txt';
         } else {
-            $log_file_default = '/Users/satria/Sites/mymvc/logfile.txt';
+            $log_file_default = '/Users/satria.persada/Sites/mvcme/logfile.txt';
         }
         $lfile = $this->log_file ? $this->log_file : $log_file_default;
         $this->fp = fopen($lfile, 'a') or exit("Can't open $lfile!");

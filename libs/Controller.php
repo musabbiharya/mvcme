@@ -12,7 +12,7 @@ class Controller {
      * @param string $name Name of the model
      * @param string $path Location of the models
      */
-    public function loadModel($name, $modulename, $modelPath = 'models/') {
+    public function loadModel($name=null, $modulename=null, $modelPath = 'models/') {
 
         if (!empty($modulename)) {
             $path = 'modules/' . $modulename . '/model/' . $name . '_model.php';

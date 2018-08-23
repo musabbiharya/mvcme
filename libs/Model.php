@@ -11,8 +11,8 @@ class Model {
 
     function __construct() {
         $this->db = new Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
+        $this->oracle = new OracleDb;
         $this->log = new Logging();
-        $this->log->lfile('/Users/satria/Sites/tasklist/log/logfile_' . date('dMY') . '.txt');
     }
 
     public function edit($data) {
@@ -31,7 +31,7 @@ class Model {
         return ($this->db->delete($this->table, $where));
     }
 
-    public function get($id) {
+    public function get($id=null) {
         $customQuery = "";
         if (isset($id)) {
             $customQuery = " where $this->table.id = $id";
