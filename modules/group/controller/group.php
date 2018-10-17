@@ -42,7 +42,7 @@ class Group extends Backend{
         parent::add();
         
     }
-    public function save($id) {
+    public function save($id=null) {
         $data = filter_input_array(INPUT_POST);
         $role = implode('|', $data['role']);
         $data['role']=$role;

@@ -17,7 +17,7 @@ class Page_Model extends Model {
         parent::__construct();
     }
     
-    public function getParent($id){
+    public function getParent($id=null){
         $customQuery = "";
         if (isset($id)){
             $customQuery =" where parent = $id";
