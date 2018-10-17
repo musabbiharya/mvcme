@@ -66,7 +66,7 @@ class Backend extends Controller{
         $this->view->data = $result;
         $this->rendering('detail');
     }
-    public function save($id) {
+    public function save($id=null) {
         $data = filter_input_array(INPUT_POST);
         $data['createdby']=$this->id;
         if (isset($id)){

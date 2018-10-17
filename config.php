@@ -1,15 +1,16 @@
 <?php
 
 // Always provide a TRAILING SLASH (/) AFTER A PATH
-define('URL', 'http://localhost/~satria/mymvc/');
+define('URL', 'http://localhost/~satria.persada/btb/office/');
 define('LIBS', 'libs/');
-
+define('LOG_PATH', '/Users/satria.persada/Sites/btb/office/log/logfile_' . date('dMY') . '.txt');
 define('DB_TYPE', 'mysql');
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'empco');
+define('DB_HOST', '103.253.107.191');
+define('DB_NAME', 'dms');
 define('DB_USER', 'root');
-define('DB_PASS', 'root');
-define('BACKEND', URL.'public/backend_template/');
+define('DB_PASS', 'bonsai212');
+define('BACKEND_TEMPLATE', URL.'public/backend_template/');
+define('PUBLIC_IMAGE', URL.'public/images/');
 
 // The sitewide hashkey, do not change this because its used for passwords!
 // This is for other hash keys... Not sure yet

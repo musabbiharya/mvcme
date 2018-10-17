@@ -10,9 +10,11 @@
 */
 class Backend_Model extends Model
 {
+    protected $tbluser;
     public function __construct()
     {
         parent::__construct();
+        $this->tbluser='tblUsers';
     }
     public function getCompany(){
         $data = $this->db->select("SELECT * from company_setting");
@@ -27,7 +29,7 @@ class Backend_Model extends Model
     public function getMenu($id) {
 
 
-        $strquery = "SELECT groupid FROM user WHERE id = '$id'";
+        $strquery = "SELECT groupid FROM $this->tbluser WHERE id = '$id'";
         $query = $this->db->select($strquery);
         $idgroup = $query[0]['groupid'];
 
@@ -50,7 +52,7 @@ class Backend_Model extends Model
     public function is_privileged($id, $page_id) {
 
         if ($page_id > 0) {
-            $strquery = "SELECT groupid FROM user WHERE id = '$id'";
+            $strquery = "SELECT groupid FROM $this->tbluser WHERE id = '$id'";
             $query = $this->db->select($strquery);
             $idgroup = $query[0]['groupid'];
 

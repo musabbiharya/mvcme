@@ -77,7 +77,7 @@ body {
     margin:10px 20px 10px 0px;
     background-color:#fff!important;
     padding:10px;
-    min-height:800px;
+    min-height:700px;
 }
 
 .text-center {
@@ -253,7 +253,7 @@ p {
 .navbar-cls-top .navbar-brand {
     color: #fff;
     /*background: #C90000;*/
-    width: 260px;
+    width: 60px;
     text-align: center;
     height: 60px;
     font-size: 30px;
@@ -388,7 +388,7 @@ li.selected{
 
 }
 .navbar-header {
-    background: #FFF;
+    background: rgb(255, 153, 51);
     border-top-left-radius: 10px;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
@@ -423,11 +423,12 @@ li.selected{
     MEDIA QUERIES     
     =============================================*/
 
-@media(min-width:768px) {
+@media(width:  100vw) {
     #page-wrapper{
         margin: 0 0 0 60px;
         padding: 15px 30px;
-        min-height: 900px;
+        height: 100vh; /* For 100% screen height */
+        /*width:  100vw;*/  
 
     }
 
