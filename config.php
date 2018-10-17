@@ -1,14 +1,14 @@
 <?php
 
 // Always provide a TRAILING SLASH (/) AFTER A PATH
-define('URL', 'http://localhost/~satria.persada/btb/office/');
+define('URL', '/');
 define('LIBS', 'libs/');
 define('LOG_PATH', '/Users/satria.persada/Sites/btb/office/log/logfile_' . date('dMY') . '.txt');
 define('DB_TYPE', 'mysql');
-define('DB_HOST', '103.253.107.191');
-define('DB_NAME', 'dms');
-define('DB_USER', 'root');
-define('DB_PASS', 'bonsai212');
+define('DB_HOST', '');
+define('DB_NAME', '');
+define('DB_USER', '');
+define('DB_PASS', '');
 define('BACKEND_TEMPLATE', URL.'public/backend_template/');
 define('PUBLIC_IMAGE', URL.'public/images/');
 
