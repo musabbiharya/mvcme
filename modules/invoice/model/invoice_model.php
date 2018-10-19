@@ -44,8 +44,8 @@ class Invoice_Model extends Model {
                 
         
     }
-    public function getPages($start,$end) {
-        $query ="select sum(page) as total from tblDocuments where date between $start and $end";
+    public function getPages($start,$end,$folder) {
+        $query ="select sum(page) as total from tblDocuments where date between $start and $end and folderlist like '%$folder%'";
         return $this->db->select($query)[0] ;
         
     }

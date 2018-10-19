@@ -54,7 +54,7 @@ class Invoice extends Backend {
         $data = $this->model->getIdProject($id);
         foreach ($data as $key => $value) {
             if($value['unit']=='/halaman'){
-                $qty=$this->model->getPages($startunixtime,$endunixtime)['total'];
+                $qty=$this->model->getPages($startunixtime,$endunixtime,$project[0]['folder'])['total'];
                 $total = $qty * $value['price'];
                 $data[$key] ['qty']= $qty;  
                 $data[$key] ['total'] =$total;

@@ -40,6 +40,7 @@
                                 <tr class="odd gradeX">
                                     <td><?= $i ?></td>
                                     <td><?= $item['name'] ?></td>
+                                    <td><?= $item['folder'] ?></td>
 
                                     <td><div class="btn-group">
                                             <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span></button>

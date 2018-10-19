@@ -26,6 +26,11 @@
                                 <input class="form-control" name='name' value="<?= $this->data['data']['name'] ?>"/>
                                 <p class="help-block"></p>
                             </div>
+                            <div class="form-group input-group input-group">
+                                <span class="input-group-addon" style="width: 100px">Name</span>
+                                <input class="form-control" name='folder' value="<?= $this->data['data']['folder'] ?>"/>
+                                <p class="help-block"></p>
+                            </div>
                             
                             
 
