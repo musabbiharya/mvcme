@@ -42,16 +42,15 @@ class User extends Backend {
     }
 
     public function editSave($id) {
-        $data[0] = $id;
-        $data[1] = (string) filter_input(INPUT_POST, 'username');
-
-        $data[2] = filter_input(INPUT_POST, 'groupid');
-        $data[3] = filter_input(INPUT_POST, 'fname');
-        $data[4] = filter_input(INPUT_POST, 'lname');
-        $data[5] = $this->id;
-        $result = $this->model->editUser($data);
-        $success = ($result['ErrorCode'] == '00') ? true : false;
-        echo json_encode(array('success' => $success, 'msg' => $result['ErrorMessage']));
+        $data = filter_input_array(INPUT_POST);
+        if (isset($id)){
+            $data['id']=$id;
+        }
+        $result = (isset($id)) ? $this->model->edit($data) : $this->model->add($data);
+        $success = ($result === 1) ? true : false;
+        $msg = ($result === 1) ? 'success' : 'failed';
+        echo json_encode(array('success' => $success, 'msg' => $msg));
+//        var_dump($data);
     }
 
     public function addSave() {

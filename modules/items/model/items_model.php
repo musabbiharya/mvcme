@@ -16,5 +16,11 @@ class Items_Model extends Model {
     public function __construct() {
         parent::__construct();
     }
+    public function getlike($param) {
+        $query = "select * from $this->table where name like '%$param%'";
+        $result=$this->db->select($query);
+        
+        return $result;
+    }
     
 }

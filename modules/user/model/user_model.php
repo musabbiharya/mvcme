@@ -10,28 +10,24 @@
  */
 
 class User_Model extends Model {
- protected $table ='users';
+ protected $table ='tblUsers';
     public function __construct() {
         parent::__construct();
     }
 
     public function getUserAll() {
-        return $this->db->select('select * from user');
+        return $this->db->select("select * from $this->table");
     }
 
     public function getUser($id) {
-        return $this->db->select("select * from user where id = '$id'");
+        return $this->db->select("select * from $this->table where id = '$id'");
     }
 
     public function getGroupAll() {
         return $this->db->select("select * from groupstaff ");
     }
 
-    public function editUser($data) {
-        $result = $this->db->callProcedure('editUser',$data,array('ErrorMessage','ErrorCode'));
-        return $result[0];
-        
-    }
+    
     public function addUser($data) {
         $result = $this->db->callProcedure('addUser',$data,array('ErrorMessage','ErrorCode'));
         return $result[0];
@@ -43,7 +39,7 @@ class User_Model extends Model {
         
     }
     public function getBelow($data) {
-        $user = $this->db->select("select groupid from users where id= $data ");
+        $user = $this->db->select("select groupid from $this->table where id= $data ");
         
         $group = $this->db->select("select id,parent from groupstaff where parent = ".$user[0]['groupid']);
         foreach ($group as $value) {

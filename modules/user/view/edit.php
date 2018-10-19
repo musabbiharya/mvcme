@@ -23,7 +23,7 @@
                                 <form role="form" id="userForm"  action="<?= URL . $this->activeMenu ?>/<?= $this->activeMenu ?>/editSave/<?= $this->userData['id'] ?>">
                                     <div class="form-group input-group input-group">
                                         <span class="input-group-addon" style="width: 100px">UserName</span>
-                                        <input class="form-control" name='username' value="<?= $this->userData['username'] ?>"/>
+                                        <input class="form-control" name='login' value="<?= $this->userData['login'] ?>"/>
                                         <p class="help-block"></p>
                                     </div>
                                     
@@ -44,14 +44,10 @@
                                     </div>
                                     <div class="form-group input-group input-group">
                                         <span class="input-group-addon" style="width: 100px">First Name</span>
-                                        <input  class="form-control" name='fname' value="<?= $this->userData['fname'] ?>" />
+                                        <input  class="form-control" name='fullName' value="<?= $this->userData['fullName'] ?>" />
                                         <p class="help-block"></p>
                                     </div>
-                                    <div class="form-group input-group input-group">
-                                        <span class="input-group-addon" style="width: 100px">Last Name</span>
-                                        <input  class="form-control" name='lname' value="<?= $this->userData['lname'] ?>" />
-                                        <p class="help-block"></p>
-                                    </div>
+                                    
 
                                     <button  type="button" class="btn btn-success" onclick="editUserSubmit()" >Submit</button>
                                     <button type="reset" class="btn btn-primary">Reset</button>

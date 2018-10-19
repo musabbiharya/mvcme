@@ -36,10 +36,10 @@
                                         <?php $i=1;foreach ($this->userList as $item) { ?>
                                             <tr class="odd gradeX">
                                             <td><?=$i?></td>
-                                            <td><?=$item['username']?></td>
+                                            <td><?=$item['login']?></td>
                                             <!--<td><?=$item['password']?></td>-->
-                                            <td class="center"><?=$item['groupName']?></td>
-                                            <td class="center"><?=$item['name']?></td>
+                                            <td class="center"><?=$item['groupid']?></td>
+                                            <td class="center"><?=$item['fullName']?></td>
                                             <td><div class="btn-group">
 											  <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span></button>
 											  <ul class="dropdown-menu">
