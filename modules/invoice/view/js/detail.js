@@ -22,9 +22,13 @@ var t = $('#listitem').DataTable({
     "orderable": false,
     "paging": false,
     "targets": 0,
+    columnDefs: [
+       { render: $.fn.dataTable.render.number( '.', ',', 2, '' ), targets: 2 },
+       { render: $.fn.dataTable.render.number( '.', ',', 2, '' ), targets: 5 }
+     ],
     "footerCallback": function ( row, data, start, end, display ) {
             var api = this.api(), data;
- 
+            var numFormat = $.fn.dataTable.render.number( '\.', ',', 2, '' ).display;
             // Remove the formatting to get integer data for summation
             var intVal = function ( i ) {
                 return typeof i === 'string' ?
@@ -42,7 +46,7 @@ var t = $('#listitem').DataTable({
  
             // Update footer
             $( api.column( 5 ).footer() ).html(
-                pageTotal 
+                numFormat(pageTotal) 
             );
         }
 });
