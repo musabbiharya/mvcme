@@ -14,12 +14,15 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title><?php echo $this->title ?></title>
+        <link rel="shortcut icon" href="<?php echo PUBLIC_IMAGE ?>btb.ico" type="image/x-icon"/>
         <link href="<?php echo BACKEND_TEMPLATE; ?>assets/css/bootstrap.css" rel="stylesheet" />
         <link href="<?php echo BACKEND_TEMPLATE; ?>assets/css/font-awesome.css" rel="stylesheet" />
         <link href="<?php echo BACKEND_TEMPLATE; ?>assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <link href="<?php echo BACKEND_TEMPLATE; ?>assets/css/custom.css" rel="stylesheet" />
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         <script src="<?php echo BACKEND_TEMPLATE; ?>assets/js/jquery-1.10.2.js"></script>
+        <link rel="stylesheet" href="<?php echo PUBLIC_CSS; ?>jquery-ui.min.css" type="text/css" />
+        <link rel="stylesheet" href="<?php echo PUBLIC_CSS; ?>bootstrap-datepicker.min.css" type="text/css" />
 
     </head>
     <body>
@@ -32,7 +35,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?= URL ?>"><img style="height: 40px" src="<?php echo URL.$this->companyLogo ?>"/></a> 
+                    <a class="navbar-brand" href="<?= URL ?>"><img style="height: 40px" src="<?php echo PUBLIC_IMAGE ?>btb.png"/></a> 
                 </div>
                 <div style="color: white;
                      padding: 15px 50px 5px 50px;

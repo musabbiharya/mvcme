@@ -28,8 +28,9 @@
 
 <script src="<?php echo BACKEND_TEMPLATE; ?>assets/js/bootstrap.min.js"></script>
 <script src="<?php echo BACKEND_TEMPLATE; ?>assets/js/jquery.metisMenu.js"></script>
-<script src="<?php echo BACKEND_TEMPLATE; ?>assets/js/dataTables/jquery.dataTables.js"></script>
+<!--<script src="<?php echo BACKEND_TEMPLATE; ?>assets/js/dataTables/jquery.dataTables.js"></script>-->
 <script src="<?php echo BACKEND_TEMPLATE; ?>assets/js/dataTables/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="<?php echo PUBLIC_JS; ?>bootstrap-datepicker.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#dataTables-example').dataTable();
