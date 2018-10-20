@@ -19,7 +19,7 @@
         <link href="<?php echo BACKEND_TEMPLATE; ?>assets/css/font-awesome.css" rel="stylesheet" />
         <link href="<?php echo BACKEND_TEMPLATE; ?>assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <link href="<?php echo BACKEND_TEMPLATE; ?>assets/css/custom.css" rel="stylesheet" />
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         <script src="<?php echo BACKEND_TEMPLATE; ?>assets/js/jquery-1.10.2.js"></script>
         <link rel="stylesheet" href="<?php echo PUBLIC_CSS; ?>jquery-ui.min.css" type="text/css" />
         <link rel="stylesheet" href="<?php echo PUBLIC_CSS; ?>bootstrap-datepicker.min.css" type="text/css" />

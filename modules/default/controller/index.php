@@ -8,10 +8,7 @@ class Index extends Controller {
     function index() {
         //echo Hash::create('sha256', 'jesse', HASH_PASSWORD_KEY);
         //echo Hash::create('sha256', 'test2', HASH_PASSWORD_KEY);
-        $this->view->title = 'Home';
-        $this->view->render('header');
-        $this->view->renderModule('default','index');
-        $this->view->render('footer');
+        header('location:'.URL.'login');
     }
     
 }
