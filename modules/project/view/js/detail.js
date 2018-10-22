@@ -57,3 +57,5 @@ function simpan() {
 
 }
 
+$('.datepicker').datepicker({
+});

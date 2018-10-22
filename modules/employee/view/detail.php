@@ -43,7 +43,7 @@
                             <div class="form-group input-group input-group">
                                 <span class="input-group-addon" style="width: 100px">Superior</span>
                                 <select class="form-control" name='parent' >
-                                    <option value="0" <?= ($this->data['data']['parent']) ? 'selected' : ''; ?>>root</option>
+                                    
                                     <?php
                                     foreach ($this->parent as $group) {
                                         $selected = ($group['id'] == $this->data['data']['parent']) ? 'selected' : '';

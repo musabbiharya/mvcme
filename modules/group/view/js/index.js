@@ -36,3 +36,5 @@ $('#splash').removeClass();
         dataType: 'JSON'
     });
 }
+$('#grouptable').DataTable({
+    });

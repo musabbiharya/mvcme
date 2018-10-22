@@ -27,9 +27,16 @@
                                 <p class="help-block"></p>
                             </div>
                             <div class="form-group input-group input-group">
-                                <span class="input-group-addon" style="width: 100px">Name</span>
+                                <span class="input-group-addon" style="width: 100px">Folder Name</span>
                                 <input class="form-control" name='folder' value="<?= $this->data['data']['folder'] ?>"/>
                                 <p class="help-block"></p>
+                            </div>
+                            <div class="form-group input-group date" data-provide="datepicker" data-date-format="yyyy/mm/dd">
+                                <span class="input-group-addon" style="width: 100px">Join Date</span>
+                                <input  type="text" class="form-control" name="started" value="<?= $this->data['data']['started'] ?>">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
                             </div>
                             
                             

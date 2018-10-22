@@ -26,7 +26,7 @@ class Group_Model extends Model {
         foreach ($query2 as $value) {
             array_push($groupRole, $value['page']);
         }
-        $groupRole = implode('|', $groupRole);
+        $groupRole = implode('| ', $groupRole);
         return $groupRole;
     }
 

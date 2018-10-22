@@ -24,7 +24,7 @@ class Employee_Model extends Model {
         }else{
             $customQuery =" where parent = 0";
         }
-        $query = "select id,page from $this->table ".$customQuery;
+        $query = "select id,fullName from $this->table ".$customQuery;
         return $this->db->select($query);
     }
     public function getLastOrder() {

@@ -25,6 +25,8 @@
                             <tr>
                                 <th>No</th>
                                 <th>Name</th>
+                                <th>Folder Root</th>
+                                <th>Start Project</th>
 
 
 
@@ -41,6 +43,7 @@
                                     <td><?= $i ?></td>
                                     <td><?= $item['name'] ?></td>
                                     <td><?= $item['folder'] ?></td>
+                                    <td><?= $item['started'] ?></td>
 
                                     <td><div class="btn-group">
                                             <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span></button>
