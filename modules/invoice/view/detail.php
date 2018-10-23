@@ -10,8 +10,8 @@
 ?>
 <style>
     .dataTables_filter {
-display: none;
-} 
+        display: none;
+    } 
 </style>
 <div class="row">
     <div class="col-md-12">
@@ -23,7 +23,7 @@ display: none;
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3>Period : <?=$this->periode?></h3>
+                        <h3>Period : <?= $this->periode ?> (<?=$this->startdate?> to <?=$this->enddate?>)</h3>
                         <form role="form" id="dataForm"  action="<?= URL . $this->activeMenu ?>/<?= $this->activeMenu ?>/saveitem/<?= $this->project ?>">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="listitem" >
@@ -71,7 +71,7 @@ display: none;
 
 
                         </form>
-
+                        <a class="btn btn-success projectprice" >Create Invoice</a>
                     </div>
                 </div>
             </div>

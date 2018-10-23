@@ -27,6 +27,8 @@
                                 <th>Name</th>
                                 <th>Folder Root</th>
                                 <th>Start Project</th>
+                                <th>Location</th>
+                                <th>maps</th>
 
 
 
@@ -44,7 +46,9 @@
                                     <td><?= $item['name'] ?></td>
                                     <td><?= $item['folder'] ?></td>
                                     <td><?= $item['started'] ?></td>
-
+                                    <td><?= $item['site'] ?></td>
+                                    <td><a href="javascript:void(0)" data-toggle="modal" data-id="<?= $item['longitude'] ?>"  data-target="#myModal" class="openModal">Show Maps</a></td>
+                                    
                                     <td><div class="btn-group">
                                             <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span></button>
                                             <ul class="dropdown-menu">

@@ -45,10 +45,12 @@ class Invoice extends Backend {
         $month =  $date0[0];
         $year = $date0[1];
         $monthbefore = sprintf("%'.02d", (intval($month)-1));
-        $startdate = '25-'.$monthbefore.'-'.$year.' 00:00';
-        $enddate =  '25-'.$month.'-'.$year.' 23:59';
-        $startunixtime = strtotime($startdate);
-        $endunixtime = strtotime($enddate);
+        $startdate = '25-'.$monthbefore.'-'.$year;
+        $startdatetime = '25-'.$monthbefore.'-'.$year.' 00:00';
+        $enddate =  '25-'.$month.'-'.$year;
+        $enddatetime =  '25-'.$month.'-'.$year.' 23:59';
+        $startunixtime = strtotime($startdatetime);
+        $endunixtime = strtotime($enddatetime);
         
         $project = $this->project_model->get($id);
         $data = $this->model->getIdProject($id);
@@ -60,6 +62,8 @@ class Invoice extends Backend {
                 $data[$key] ['total'] =$total;
             }
         }
+        $this->view->startdate=$startdate;
+        $this->view->enddate=$enddate;
         $this->view->periode = $period;
         $this->view->data = $data;
         $this->view->datalength = count($this->view->data);

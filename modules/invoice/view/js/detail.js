@@ -22,6 +22,7 @@ var t = $('#listitem').DataTable({
     "orderable": false,
     "paging": false,
     "targets": 0,
+    info:false,
     columnDefs: [
        { render: $.fn.dataTable.render.number( '.', ',', 2, '' ), targets: 2 },
        { render: $.fn.dataTable.render.number( '.', ',', 2, '' ), targets: 5 }

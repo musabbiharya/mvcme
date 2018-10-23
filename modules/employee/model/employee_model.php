@@ -22,7 +22,7 @@ class Employee_Model extends Model {
         if (isset($id)){
             $customQuery =" where parent = $id";
         }else{
-            $customQuery =" where parent = 0";
+            $customQuery ="";
         }
         $query = "select id,fullName from $this->table ".$customQuery;
         return $this->db->select($query);

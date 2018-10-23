@@ -20,6 +20,7 @@ class Employee extends Backend{
          $result['data'] = $this->model->get();
          foreach ($result['data'] as $key => $value) {
              $result['data'][$key]['groupName']= $this->group_model->get($value['groupID'])[0]['groupName'];
+             $result['data'][$key]['parent']= $this->model->get($value['parent'])[0]['fullName'];
              
              
          }

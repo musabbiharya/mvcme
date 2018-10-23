@@ -38,6 +38,16 @@
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
                             </div>
+                            <div class="form-group input-group input-group">
+                                <span class="input-group-addon" style="width: 100px">Site Address</span>
+                                <input class="form-control" name='site' value="<?= $this->data['data']['site'] ?>"/>
+                                <p class="help-block"></p>
+                            </div>
+                            <div class="form-group input-group input-group">
+                                <a class="btn btn-success getloc" >Get Longitude</a>
+                                <input class="form-control" name='logitude' value="<?= $this->data['data']['logitude'] ?>"/>
+                                <p class="help-block"></p>
+                            </div>
                             
                             
 
