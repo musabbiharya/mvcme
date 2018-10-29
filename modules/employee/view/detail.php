@@ -72,6 +72,22 @@
 
                                 </select>
                             </div>
+                            <div class="form-group input-group input-group">
+                                <span class="input-group-addon" style="width: 100px">Placement</span>
+                                <select class="form-control" name='sitesid' >
+                                    
+                                    <?php
+                                    foreach ($this->place as $group) {
+                                        $selected = ($group['id'] == $this->data['data']['sitesid']) ? 'selected' : '';
+                                        ?>
+
+                                        <option value="<?= $group['id'] ?>" <?= $selected ?>><?= $group['name'] ?></option>
+                                        <?php
+                                    }
+                                    ?>
+
+                                </select>
+                            </div>
 
 
 

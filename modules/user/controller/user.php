@@ -31,6 +31,7 @@ class User extends Backend {
         $data = $this->model->getUser($id);
         $this->view->userData = $data[0];
         $this->view->userGroup = $this->model->getGroupAll();
+        $this->view->employee = $this->model->getEmployee();
         $this->rendering('edit');
     }
 
@@ -73,6 +74,7 @@ class User extends Backend {
         $success = ($result['ErrorCode'] == '00') ? true : false;
         echo json_encode(array('success' => $success, 'msg' => $result['ErrorMessage']));
     }
+    
    
 
 }

@@ -36,11 +36,11 @@
         var b = $('li').has('ul').has('li').has('a.active-menu');
         b.addClass('menu-open active');
         $('li').has('a.active-menu').addClass('active');
-        console.log(b);
+//        console.log(b);
     });
 </script>
 
-<script src="<?php echo BACKEND_TEMPLATE; ?>assets/js/custom.js"></script>
+<!--<script src="<?php echo BACKEND_TEMPLATE; ?>assets/js/custom.js"></script>-->
 
 <?php
 if (isset($this->js)) {

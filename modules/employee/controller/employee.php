@@ -15,12 +15,14 @@ class Employee extends Backend{
             function __construct() {
         parent::__construct();
          $this->loadCustomModel('group', 'group');
+         $this->loadCustomModel('sites', 'sites');
     }
     public function Index() {
          $result['data'] = $this->model->get();
          foreach ($result['data'] as $key => $value) {
              $result['data'][$key]['groupName']= $this->group_model->get($value['groupID'])[0]['groupName'];
              $result['data'][$key]['parent']= $this->model->get($value['parent'])[0]['fullName'];
+             $result['data'][$key]['place']= $this->sites_model->get($value['sitesid'])[0]['name'];
              
              
          }
@@ -33,6 +35,7 @@ class Employee extends Backend{
     public function edit($id) {
         $this->view->parent = $this->model->getParent();
         $this->view->position = $this->group_model->get();
+        $this->view->place = $this->sites_model->get();
 //        $this->view->order = $this->model->getLastOrder();
         parent::edit($id);
     }
@@ -40,6 +43,7 @@ class Employee extends Backend{
     public function add() {
         $this->view->parent = $this->model->getParent();
         $this->view->position = $this->group_model->get();
+        $this->view->place = $this->sites_model->get();
 //        $this->view->order = $this->model->getLastOrder();
         parent::add();
     }

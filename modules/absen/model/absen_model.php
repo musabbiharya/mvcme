@@ -57,5 +57,42 @@ class Absen_Model extends Model {
         $where = "id = '$data'";
         return ($this->db->delete($this->table, $where));
     }
+    
+    public function getAttendaceInToday($id) {
+        $date = date ("Y-m-d");
+        $query = "SELECT * FROM attendance where  date_format(timelock, '%Y-%m-%d') = '$date' and empid = '$id' and remark ='IN' ";
+        $sth = $this->db->prepare($query);
+        $sth->execute();
+        $count =  $sth->rowCount();
+        return $count;
+        
+    }
+    public function getAttendaceOutToday($id) {
+        $date = date ("Y-m-d");
+        $query = "SELECT * FROM attendance where  date_format(timelock, '%Y-%m-%d') = '$date' and empid = '$id' and remark ='OUT' ";
+        $sth = $this->db->prepare($query);
+        $sth->execute();
+        $count =  $sth->rowCount();
+        return $count;
+        
+    }
+     public function absenIn($id=null,$loc=null) {
+        $query = "insert into attendance (empid,loc,remark) values ($id,'$loc','IN') ";
+//        return $query;
+        $sth = $this->db->prepare($query);
+        $sth->execute();
+        $count =  $sth->rowCount();
+        return $count;
+        
+    }
+    public function absenOut($id=null,$loc=null) {
+        $query = "insert into attendance (empid,loc,remark) values ($id,'$loc','OUT') ";
+//        return $query;
+        $sth = $this->db->prepare($query);
+        $sth->execute();
+        $count =  $sth->rowCount();
+        return $count;
+        
+    }
 
 }

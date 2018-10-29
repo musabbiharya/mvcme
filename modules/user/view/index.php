@@ -26,7 +26,7 @@
                                             <th>No</th>
                                             <th>Username</th>
                                             <!--<th>Password</th>-->
-                                            <th>Group</th>
+                                            <th>UserId</th>
                                             <th>Name</th>
                                             <th>Operation</th>
                                            
@@ -38,7 +38,7 @@
                                             <td><?=$i?></td>
                                             <td><?=$item['login']?></td>
                                             <!--<td><?=$item['password']?></td>-->
-                                            <td class="center"><?=$item['groupid']?></td>
+                                            <td class="center"><?=$item['userid']?></td>
                                             <td class="center"><?=$item['fullName']?></td>
                                             <td><div class="btn-group">
 											  <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span></button>

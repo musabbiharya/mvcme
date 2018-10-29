@@ -16,6 +16,7 @@ class Backend extends Controller{
         parent::__construct();
         Auth::handleLogin();
         $this->id = $_SESSION['userid'];
+        $this->view->userid = $_SESSION['userid'];
 //        @session_start();
         $this->view->nameuser=$_SESSION['userProfileName'];
         $this->loadModel('backend');

@@ -27,7 +27,8 @@
                                 <th>Name</th>
                                 <th>Join</th>
                                 <th>Superior</th>
-                              <th>Position</th>
+                                <th>Position</th>
+                                <th>Placement</th>
                                  <th>Operation</th>
                                 
                             </tr>
@@ -43,6 +44,7 @@
                                     <td><?= $item['joinDate'] ?></td>
                                     <td><?= $item['parent'] ?></td>
                                     <td><?= $item['groupName'] ?></td>
+                                    <td><?= $item['place'] ?></td>
                                     <td><div class="btn-group">
 											  <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span></button>
 											  <ul class="dropdown-menu">

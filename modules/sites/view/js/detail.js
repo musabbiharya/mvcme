@@ -59,3 +59,22 @@ function simpan() {
 
 $('.datepicker').datepicker({
 });
+
+$('.getloc').on('click',function(){
+    var sitename = $("input[name=address]").val();
+//    console.log(sitename);
+    $.ajax({
+        type: "POST",
+        url: "https://maps.googleapis.com/maps/api/geocode/json?address="+sitename+"&key=AIzaSyAoMoCXfaMix78wsFxAHh8c0I9s4w0UaC4",
+        success: function (data) {
+            if (data.status='ok'){
+                $("input[name=loc]").val(data.results[0].geometry.location.lat+','+data.results[0].geometry.location.lng);
+            }else{
+                splash('glyphicon glyphicon-remove', 'alert alert-danger', 'get latitude failed');
+            }
+            
+
+        },
+        dataType: 'JSON'
+    });
+});

@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="<?php echo BACKEND_TEMPLATE; ?>bower_components/Ionicons/css/ionicons.min.css">
 
         <link rel="stylesheet" href="<?php echo BACKEND_TEMPLATE; ?>dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="<?php echo BACKEND_TEMPLATE; ?>dist/css/skins/skin-blue.min.css">
+        <link rel="stylesheet" href="<?php echo BACKEND_TEMPLATE; ?>dist/css/skins/skin-green.min.css">
 
         <link rel="stylesheet"
               href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -40,7 +40,7 @@
     |               | sidebar-mini                            |
     |---------------------------------------------------------|
     -->
-    <body class="hold-transition skin-blue sidebar-mini">
+    <body class="hold-transition skin-green sidebar-mini">
         <div class="wrapper">
 
             <!-- Main Header -->

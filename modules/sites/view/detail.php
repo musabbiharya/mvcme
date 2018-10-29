@@ -27,18 +27,32 @@
                                 <p class="help-block"></p>
                             </div>
                             <div class="form-group input-group input-group">
-                                <span class="input-group-addon" style="width: 100px">Folder Name</span>
-                                <input class="form-control" name='folder' value="<?= $this->data['data']['folder'] ?>"/>
+                                <span class="input-group-addon" style="width: 100px">Project</span>
+                                <select class="form-control" name='projectid' >
+                                    <option value="0" <?= ($this->data['data']['projectid']) ? 'selected' : ''; ?>>HO</option>
+                                    <?php
+                                    foreach ($this->parent as $group) {
+                                        $selected = ($group['id'] == $this->data['data']['projectid']) ? 'selected' : '';
+                                        ?>
+
+                                        <option value="<?= $group['id'] ?>" <?= $selected ?>><?= $group['name'] ?></option>
+                                        <?php
+                                    }
+                                    ?>
+
+                                </select>
+                            </div>
+                           
+                            <div class="form-group input-group input-group">
+                                <span class="input-group-addon" style="width: 100px">Site Address</span>
+                                <input class="form-control" name='address' value="<?= $this->data['data']['address'] ?>"/>
                                 <p class="help-block"></p>
                             </div>
-                            <div class="form-group input-group date" data-provide="datepicker" data-date-format="yyyy/mm/dd">
-                                <span class="input-group-addon" style="width: 100px">Start Date</span>
-                                <input  type="text" class="form-control" name="started" value="<?= $this->data['data']['started'] ?>">
-                                <div class="input-group-addon">
-                                    <span class="glyphicon glyphicon-th"></span>
-                                </div>
+                            <div class="form-group input-group input-group">
+                                <a class="btn btn-success getloc" >Get Longitude</a>
+                                <input class="form-control" name='loc' value="<?= $this->data['data']['loc'] ?>"/>
+                                <p class="help-block"></p>
                             </div>
-                            
                             
                             
 

@@ -29,13 +29,13 @@
                                     
                                     <div class="form-group input-group input-group">
                                         <span class="input-group-addon" style="width: 100px">Group</span>
-                                        <select class="form-control" name='groupid' >
+                                        <select class="form-control" name='userid' >
                                             <?php
-                                            foreach ($this->userGroup as $group) {
-                                                $selected = ($group['id'] == $this->userData['groupid']) ? 'selected' : '';
+                                            foreach ($this->employee as $group) {
+                                                $selected = ($group['id'] == $this->userData['userid']) ? 'selected' : '';
                                                 ?>
 
-                                                <option value="<?= $group['id'] ?>" <?= $selected ?>><?= $group['groupName'] ?></option>
+                                                <option value="<?= $group['id'] ?>" <?= $selected ?>><?= $group['fullName'] ?></option>
                                                 <?php
                                             }
                                             ?>

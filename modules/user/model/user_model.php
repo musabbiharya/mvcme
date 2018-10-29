@@ -63,4 +63,8 @@ class User_Model extends Model {
         return $result;
         
     }
+    public function getEmployee() {
+         $user = $this->db->select("select * from employee  ");
+         return $user;
+    }
 }
