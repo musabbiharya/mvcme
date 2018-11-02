@@ -2,7 +2,7 @@
 
 require 'config.php';
 require 'util/Auth.php';
-
+date_default_timezone_set('Asia/Jakarta');
 function __autoload($class) {
     require LIBS . $class .".php";
 }

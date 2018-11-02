@@ -57,5 +57,10 @@ class Employee_Model extends Model {
         $where = "id = '$data'";
         return ($this->db->delete($this->table, $where));
     }
+    public function edit($data,$where) {
+        $where = "id = '$where'";
+//        unset($data['id']);
+        return ($this->db->update($this->table, $data, $where));
+    }
 
 }

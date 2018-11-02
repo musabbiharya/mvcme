@@ -12,7 +12,7 @@
 class Absen extends Backend {
 
     protected $module_name = 'absen';
-    protected $_title = 'GEO Tag Absensi';
+    protected $_title = 'GEO Tag Attendance';
 
     function __construct() {
         parent::__construct();
@@ -58,6 +58,11 @@ class Absen extends Backend {
             
         }
         $filename =  $dirname.'/'.$this->id . '-masuk.jpg';
+        if (file_exists($filename)){
+            $filenameold = $dirname.'/'.$this->id . '-masukold.jpg';
+            rename($filename, $filenameold);
+            unlink($filenameold);
+        }
 //        print $rawData;die;
         $filteredData = explode(',', $rawData);
         $unencoded = base64_decode($filteredData[1]);

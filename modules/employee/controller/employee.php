@@ -47,6 +47,17 @@ class Employee extends Backend{
 //        $this->view->order = $this->model->getLastOrder();
         parent::add();
     }
+    public function save($id=null) {
+        $data = filter_input_array(INPUT_POST);
+        $data['createdby']=$this->id;
+        
+        $result = (isset($id)) ? $this->model->edit($data,$id) : $this->model->add($data);
+//        var_dump($result);die;
+        $success = ($result === 1) ? true : false;
+        $msg = ($result === 1) ? 'success' : 'failed';
+        echo json_encode(array('success' => $success, 'msg' => $msg));
+//        var_dump($data);
+    }
     
     
     

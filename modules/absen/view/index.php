@@ -32,11 +32,19 @@
 <script> var userid = '<?= $this->userid ?>'</script>
 
 <div class="col-md-12" >
-    <!--<div class="col-md-6">-->
+    <div class="col-md-6">
+        <a href="javascript:void(0)" class="btn btn-success masuk">IN</a>
+    </div>
+    <div class="col-md-6">
+        <a href="javascript:void(0)" class="btn btn-warning keluar">OUT</a>
+    </div>
+</div>
+<div class="col-md-12" >
         <h2 class="absennya"></h2>
         <div class="camcontent">
             <video id="video" autoplay></video>
             <canvas id="canvas" width="640" height="480"> </canvas>
+            <input type="file" accept="image/*" capture="camera" />
         </div>
         <div class="cambuttons">
             <button id="snap" style="display:none;">  Capture </button>
