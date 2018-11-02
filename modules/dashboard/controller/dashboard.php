@@ -29,6 +29,7 @@ class Dashboard extends Backend {
             }
             $this->view->data = $dataAbsen;
             $this->view->group = $groupname;
+             $this->view->date = $date;
              $this->view->js = array('js/admin.js');
             $this->rendering('admin');
         } else {

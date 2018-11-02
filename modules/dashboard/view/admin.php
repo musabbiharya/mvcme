@@ -14,7 +14,7 @@
         <!-- Advanced Tables -->
         <div class="panel panel-default">
             <div class="panel-heading">
-                <input id="datepicker" type="text"  class="datepicker"  value="" readonly>
+                <input id="datepicker" type="text"  class="datepicker"  value="<?=$this->date?>" readonly>
                 <a class="btn btn-success attendacelist" >Show</a>
 
             </div>
