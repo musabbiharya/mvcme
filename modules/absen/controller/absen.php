@@ -18,6 +18,7 @@ class Absen extends Backend {
         parent::__construct();
         $this->loadCustomModel('group', 'group');
         $this->loadCustomModel('sites', 'sites');
+        $this->loadCustomModel('employee', 'employee');
     }
 
     public function Index() {
@@ -47,6 +48,8 @@ class Absen extends Backend {
     }
 
     public function absenin() {
+        $name = $this->employee_model->get($this->id)[0]['fullName'];
+        $image_name = implode('-',explode(" ",$name));
         $input = filter_input_array(INPUT_POST);
         $rawData = $input['imgBase64'];
         $dirname =  UPLOAD . date('Y') . '/' . date('M') . '/' . date('d') ;
@@ -57,9 +60,9 @@ class Absen extends Backend {
             }
             
         }
-        $filename =  $dirname.'/'.$this->id . '-masuk.jpg';
+        $filename =  $dirname.'/'.$image_name . '-masuk.jpg';
         if (file_exists($filename)){
-            $filenameold = $dirname.'/'.$this->id . '-masukold.jpg';
+            $filenameold = $dirname.'/'.$image_name . '-masukold.jpg';
             rename($filename, $filenameold);
             unlink($filenameold);
         }
@@ -86,6 +89,8 @@ class Absen extends Backend {
     }
 
     public function absenout() {
+        $name = $this->employee_model->get($this->id)[0]['fullName'];
+        $image_name = implode('-',explode(" ",$name));
        $input = filter_input_array(INPUT_POST);
         $rawData = $input['imgBase64'];
         $dirname =  UPLOAD . date('Y') . '/' . date('M') . '/' . date('d') ;
@@ -96,7 +101,7 @@ class Absen extends Backend {
             }
             
         }
-        $filename =  $dirname.'/'.$this->id . '-pulang.jpg';
+        $filename =  $dirname.'/'.$image_name . '-pulang.jpg';
 //        print $rawData;die;
         $filteredData = explode(',', $rawData);
         $unencoded = base64_decode($filteredData[1]);

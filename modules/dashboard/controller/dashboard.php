@@ -23,8 +23,8 @@ class Dashboard extends Backend {
             $dataAbsen = $this->absen_model->getAbsenEmp(null,$date);
             foreach ($dataAbsen as $key => $value) {
                 $place = explode("-", $value['dateAtt']);
-                $dataAbsen[$key]['inPic'] = URL . 'upload/images/' . $place[0] . '/' . date('M', mktime(0, 0, 0, $place[1], 10)) . '/' . $place[2] . '/' . $value['empid'] . '-masuk.jpg';
-                $dataAbsen[$key]['outPic'] = URL . 'upload/images/' . $place[0] . '/' . date('M', mktime(0, 0, 0, $place[1], 10)) . '/' . $place[2] . '/' . $value['empid'] . '-pulang.jpg';
+                $dataAbsen[$key]['inPic'] = URL . 'upload/images/' . $place[0] . '/' . date('M', mktime(0, 0, 0, $place[1], 10)) . '/' . $place[2] . '/' . implode('-',explode(' ',$value['fullName'])) . '-masuk.jpg';
+                $dataAbsen[$key]['outPic'] = URL . 'upload/images/' . $place[0] . '/' . date('M', mktime(0, 0, 0, $place[1], 10)) . '/' . $place[2] . '/' . implode('-',explode(' ',$value['fullName'])) . '-pulang.jpg';
 //                $dataAbsen[$key]['outPic'] = URL . 'upload/images/' . $place[0] . '/' . $place[1] . '/' . $place[2] . '/' . $value['empid'] . '-pulang.jpg';
             }
             $this->view->data = $dataAbsen;
