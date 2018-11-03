@@ -28,9 +28,9 @@
                                 <th>Name</th>
                                 <th>Date</th>
                                 <th>Time IN</th>
-                                <!--<th>Pict IN</th>-->
+                                <th>Pict IN</th>
                                 <th>Time OUT</th>
-                                <!--<th>Pict OUT</th>-->
+                                <th>Pict OUT</th>
                                 <th>Location</th>
                                 <th>Approval Stat</th>
                                 <th>Remarks</th>
@@ -50,9 +50,9 @@
                                     <td><?= $item['fullName'] ?></td>
                                     <td><?= $item['dateAtt'] ?></td>
                                     <td><?= $item['inTime'] ?></td>
-                                    <!--<td><img src="<?= $item['inPic'] ?>" height="50"/></td>-->
+                                    <td><img src="<?= $item['inPic'] ?>" height="50"/></td>
                                     <td><?= $item['outTime'] ?></td>
-                                    <!--<td><img src="<?= $item['outPic'] ?>" height="50"/></td>-->
+                                    <td><img src="<?= $item['outPic'] ?>" height="50"/></td>
                                     <td><?= $item['loc'] ?></td>
                                     <td><?= $item['status'] ?></td>
                                     <td><?= $item['remarks'] ?></td>
