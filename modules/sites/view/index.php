@@ -38,7 +38,7 @@
                             foreach ($this->data['data'] as $item) {
                                 ?>
                                 <tr class="odd gradeX">
-                                    <td><?= $i ?></td>
+                                    <td></td>
                                     <td><?= $item['name'] ?></td>
                                     <td><?= $item['project'] ?></td>
                                     <td><?= $item['loc'] ?></td>

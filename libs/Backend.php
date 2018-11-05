@@ -10,16 +10,21 @@
 */
 class Backend extends Controller{
     protected $id;
+    protected $group;
     protected $module_name;
+    protected $inverior;
     protected $_title;
             function __construct() {
         parent::__construct();
+        $this->loadModel('backend');
         Auth::handleLogin();
         $this->id = $_SESSION['userid'];
+        $this->group = $this->model->getGroup($_SESSION['role'])[0]['groupName'];
         $this->view->userid = $_SESSION['userid'];
+//        $this->inverior = $this->model->getInverior('2017080001');
+        $this->inverior = $this->model->getInverior($this->id);
 //        @session_start();
         $this->view->nameuser=$_SESSION['userProfileName'];
-        $this->loadModel('backend');
         $data = $this->model->getCompany();
         $this->view->companyLogo = (isset($data[3]['description']))?$data[3]['description']:'';
         $this->view->companyName = (isset($data[0]['description']))?$data[3]['description']:'';

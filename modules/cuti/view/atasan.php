@@ -1,14 +1,12 @@
 <?php
+
 /*
- * mvc ;
- * idex.php ;
- * Satria Persada <triasada@yahoo.com> ;
- * Nov 4, 2017;
- * 11:22:42 PM;
- * Jakarta International Container Terminal (JICT);
+ * index.php
+ * Satria Persada <triasada@yahoo.com> 
+ * 8:28:28 PM
+ * office 
  */
 ?>
-
 <div class="row">
     <div class="col-md-12">
         <!-- Advanced Tables -->
@@ -37,7 +35,7 @@
                             foreach ($this->data['data'] as $item) {
                                 ?>
                                 <tr class="odd gradeX">
-                                    <td></td>
+                                    <td><?= $i ?></td>
                                     <td><?= $item['page'] ?></td>
                                     <td><?= $item['parent'] ?></td>
                                     <td><?= $item['pclass'] ?></td>

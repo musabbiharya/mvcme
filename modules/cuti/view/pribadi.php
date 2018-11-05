@@ -1,14 +1,12 @@
 <?php
+
 /*
- * mvc ;
- * idex.php ;
- * Satria Persada <triasada@yahoo.com> ;
- * Nov 4, 2017;
- * 11:22:42 PM;
- * Jakarta International Container Terminal (JICT);
+ * index.php
+ * Satria Persada <triasada@yahoo.com> 
+ * 8:28:28 PM
+ * office 
  */
 ?>
-
 <div class="row">
     <div class="col-md-12">
         <!-- Advanced Tables -->
@@ -23,11 +21,11 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Page Name</th>
-                                <th>Parent</th>
-                                <th>Class</th>
-                                <th>Description</th>
-                              
+                                <th>Cuti</th>
+                                <th>Start</th>
+                                <th>End</th>
+                                <th>Reason</th>
+                                <th>Status</th>
                                  <th>Operation</th>
                                 
                             </tr>
@@ -38,10 +36,11 @@
                                 ?>
                                 <tr class="odd gradeX">
                                     <td></td>
-                                    <td><?= $item['page'] ?></td>
-                                    <td><?= $item['parent'] ?></td>
-                                    <td><?= $item['pclass'] ?></td>
-                                    <td><?= $item['descript'] ?></td>
+                                    <td><?= $item['cuti'] ?></td>
+                                    <td><?= $item['startdate'] ?></td>
+                                    <td><?= $item['enddate'] ?></td>
+                                    <td><?= $item['reason'] ?></td>
+                                    <td><?= $item['status'] ?></td>
                                     <td><div class="btn-group">
 											  <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span></button>
 											  <ul class="dropdown-menu">
