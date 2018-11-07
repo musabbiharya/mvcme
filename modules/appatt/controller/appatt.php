@@ -24,8 +24,7 @@ class Appatt extends Backend {
         if (!isset($date)){
             $date = date("Y-m-d", strtotime("-1 days"));
         }
-        if ($groupname == 'Administrator') {
-            $dataAbsen = $this->absen_model->getAbsenEmp(null,$date);
+            $dataAbsen = $this->absen_model->getAbsenEmp($this->inverior,$date);
             foreach ($dataAbsen as $key => $value) {
                 $place = explode("-", $value['dateAtt']);
                 $dataAbsen[$key]['inPic'] = URL . 'upload/images/' . $place[0] . '/' . date('M', mktime(0, 0, 0, $place[1], 10)) . '/' . $place[2] . '/' . implode('-',explode(' ',$value['fullName'])) . '-masuk.jpg';
@@ -37,9 +36,7 @@ class Appatt extends Backend {
              $this->view->date = $date;
              $this->view->js = array('js/admin.js');
             $this->rendering('admin');
-        } else {
-            $this->rendering('index');
-        }
+        
     }
 
     function approve($id,$date=null) {

@@ -103,17 +103,20 @@ class Absen_Model extends Model {
         return $count;
     }
 
-    public function getAbsenEmp($id = null,$date) {
+    public function getAbsenEmp($id = null, $date) {
 //        $date = date("Y-m-d", strtotime("-1 days"));
         $customQuery = "";
         if (isset($id)) {
-            $customQuery = " and a.empid = '$id'";
+            if (is_array($id)) {
+                $id = implode("','", $id);
+            }
+            $customQuery = " and a.empid IN('$id')";
         }
         $query = "select a.*, b.fullName from attendance a left join employee b on a.empid=b.id  where a.dateAtt like '$date%' $customQuery";
         return $this->db->select($query);
     }
 
-    public function approve($id,$date) {
+    public function approve($id, $date) {
 //        $date = date("Y-m-d", strtotime("-1 days"));
         $query = "update  attendance set status='Approved' where empid='$id' and dateAtt= '$date' ";
         $sth = $this->db->prepare($query);
@@ -121,7 +124,8 @@ class Absen_Model extends Model {
         $count = $sth->rowCount();
         return $count;
     }
-    public function rejected($id,$date) {
+
+    public function rejected($id, $date) {
 //        $date = date("Y-m-d", strtotime("-1 days"));
         $query = "update  attendance set status='Rejected' where empid='$id' and dateAtt= '$date' ";
         $sth = $this->db->prepare($query);
