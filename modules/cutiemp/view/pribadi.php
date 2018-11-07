@@ -25,7 +25,7 @@
                                 <th>End</th>
                                 <th>Reason</th>
                                 <th>Status</th>
-                                <th>Operation</th>
+                                <!--<th>Operation</th>-->
 
                             </tr>
                         </thead>
@@ -41,7 +41,7 @@
                                     <td><?= $item['enddate'] ?></td>
                                     <td><?= $item['reason'] ?></td>
                                     <td><?= $item['status'] ?></td>
-                                    <td>
+<!--                                    <td>
                                         <?php
                                         if ($item['status']=='Applied'){
                                         ?>
@@ -57,7 +57,7 @@
                                         <?php
                                         }
                                         ?>
-                                    </td>
+                                    </td>-->
 
                                 </tr>
                                 <?php $i++;
