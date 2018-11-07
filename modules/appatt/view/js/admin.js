@@ -2,13 +2,13 @@ function approve(id) {
     var datepick = $('#datepicker').val();
     $.ajax({
         type: "POST",
-        url: home + 'dashboard/approve/' + id + '/' + datepick,
+        url: home + 'appatt/approve/' + id + '/' + datepick,
         data: id,
         success: function (data) {
             if (data == '1') {
 
                 splash('glyphicon glyphicon-ok', 'alert alert-success', 'Approved');
-                var redurl = home + 'dashboard/index/' + datepick;
+                var redurl = home + 'appatt/index/' + datepick;
                setTimeout(function () {
                     window.location.href = redurl;
                 }, 2000);
@@ -27,13 +27,13 @@ function rejected(id) {
     var datepick = $('#datepicker').val();
     $.ajax({
         type: "POST",
-        url: home + 'dashboard/rejected/' + id + '/' + datepick,
+        url: home + 'appatt/rejected/' + id + '/' + datepick,
         data: id,
         success: function (data) {
             if (data == '1') {
 
                 splash('glyphicon glyphicon-ok', 'alert alert-success', 'Approved');
-                var redurl = home + 'dashboard/index/' + datepick;
+                var redurl = home + 'appatt/index/' + datepick;
                 setTimeout(function () {
                     window.location.href = redurl;
                 }, 2000);
@@ -55,7 +55,7 @@ $("#datepicker").datepicker({
 $('.attendacelist').on('click', function () {
     var datepicker = $('#datepicker').val();
     if (datepicker !== "") {
-        window.location.href = home + 'dashboard/index/' + datepicker;
+        window.location.href = home + 'appatt/index/' + datepicker;
     } else {
         splash('glyphicon glyphicon-remove', 'alert alert-danger', 'Period Cannot be Empty');
     }

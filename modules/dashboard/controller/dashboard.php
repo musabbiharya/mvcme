@@ -9,16 +9,21 @@ class Dashboard extends Backend {
         parent::__construct();
         $this->loadCustomModel('group', 'group');
         $this->loadCustomModel('absen', 'absen');
-        $this->view->js = array('dashboard/js/default.js');
     }
 
     function index() {
         $this->view->title = 'Dashboard';
         $this->view->msg = 'Welcome ' . $this->view->nameuser;
-        
-    
-            $this->rendering('index');
-        
+        if (!isset($date)) {
+            $date = date("Y-m");
+        }
+        $dataAbsen = $this->absen_model->getAbsenEmp($this->id,$date);
+//        $dataAbsen = $this->absen_model->getAbsenEmp('2018111011', $date);
+
+        $this->view->data = $dataAbsen;
+        $this->view->date = $date;
+        $this->view->js = array('js/index.js');
+        $this->rendering('index');
     }
 
     function logout() {
@@ -26,6 +31,5 @@ class Dashboard extends Backend {
         header('location: ' . URL . 'login');
         exit;
     }
-    
 
 }

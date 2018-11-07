@@ -107,9 +107,9 @@ class Absen_Model extends Model {
 //        $date = date("Y-m-d", strtotime("-1 days"));
         $customQuery = "";
         if (isset($id)) {
-            $customQuery = " and attendance.empid = '$id'";
+            $customQuery = " and a.empid = '$id'";
         }
-        $query = "select a.*, b.fullName from attendance a left join employee b on a.empid=b.id  where a.dateAtt ='$date' $customQuery";
+        $query = "select a.*, b.fullName from attendance a left join employee b on a.empid=b.id  where a.dateAtt like '$date%' $customQuery";
         return $this->db->select($query);
     }
 

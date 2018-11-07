@@ -16,7 +16,7 @@
 
         </div>
         <div class="panel-body">
-            <form role="form" id="dataForm"  action="<?= URL . $this->activeMenu ?>/<?= $this->activeMenu ?>/save/<?= $this->data['data']['id'] ?>">
+            <form role="form" class="needs-validation" novalidate id="dataForm"  action="<?= URL . $this->activeMenu ?>/<?= $this->activeMenu ?>/save/<?= $this->data['data']['id'] ?>">
                 <div class="form-group input-group ">
                     <span class="input-group-addon" style="width: 100px">Leave </span>
                     <select  name="cuti" id="cuti" class="form-control" onchange="cutiselect($(this))">
@@ -30,11 +30,11 @@
                 </div>
                 <div class="form-group input-group input-group">
                     <span class="input-group-addon" style="width: 100px">Start Date </span>
-                    <input name="startdate" id="startdate" type="text"  class="datepicker"  value="<?= $this->data['data']['startdate'] ?>" readonly>
+                    <input name="startdate" id="startdate" type="text"  class="datepicker error"  value="<?= $this->data['data']['startdate'] ?>" readonly >
                 </div>
                 <div class="form-group input-group input-group">
                     <span class="input-group-addon" style="width: 100px">End Date </span>
-                    <input name="enddate" id="enddate" type="text"  class="datepicker"  value="<?= $this->data['data']['enddate'] ?>" readonly>
+                    <input name="enddate" id="enddate" type="text"  class="datepicker"  value="<?= $this->data['data']['enddate'] ?>" readonly >
                 </div>
                 <div class="form-group input-group reason" style="display: none">
                     <span class="input-group-addon" style="width: 100px">Reason </span>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group input-group evidence" style="display: none">
                     <span class="input-group-addon" style="width: 100px">Evidence </span>
-                    <input  type="file"    accept="image/png, image/jpeg" name="evidence" disabled="true"/>
+                    <input id="evidence"  type="file" class="form-control-file"   accept="image/png, image/jpeg" name="evidence" disabled="true"/>
                 </div>
                 <button  type="button" class="btn btn-success" onclick="simpan()" >Submit</button>
                 <button type="reset" class="btn btn-primary">Reset</button>

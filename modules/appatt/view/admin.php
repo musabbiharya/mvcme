@@ -57,8 +57,14 @@
                                     <td><?= $item['status'] ?></td>
                                     <td><?= $item['remarks'] ?></td>
                                     <td>
-                                        <a href="javascript:void(0)" onclick="approve('<?=$item['empid']?>')">approve</a>
-                                        <a href="javascript:void(0)" onclick="rejected('<?=$item['empid']?>')">reject</a>
+                                        <?php
+                                        if ($item['status']==''){
+                                        ?>
+                                        <a class="btn btn-success" href="javascript:void(0)" onclick="approve('<?=$item['empid']?>')">approve</a>
+                                        <a class="btn btn-danger" href="javascript:void(0)" onclick="rejected('<?=$item['empid']?>')">reject</a>
+                                        <?php
+                                        }
+                                        ?>
                                     </td>
 
                                 </tr>
