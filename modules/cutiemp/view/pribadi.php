@@ -1,5 +1,4 @@
 <?php
-
 /*
  * index.php
  * Satria Persada <triasada@yahoo.com> 
@@ -16,8 +15,8 @@
 
             </div>
             <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -26,13 +25,14 @@
                                 <th>End</th>
                                 <th>Reason</th>
                                 <th>Status</th>
-                                 <th>Operation</th>
-                                
+                                <th>Operation</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i = 1;
-                            foreach ($this->data['data'] as $item) {
+                            <?php
+                            $i = 1;
+                            foreach ($this->data['data']['pribadi'] as $item) {
                                 ?>
                                 <tr class="odd gradeX">
                                     <td></td>
@@ -41,19 +41,28 @@
                                     <td><?= $item['enddate'] ?></td>
                                     <td><?= $item['reason'] ?></td>
                                     <td><?= $item['status'] ?></td>
-                                    <td><div class="btn-group">
-											  <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span></button>
-											  <ul class="dropdown-menu">
-												<li><a href="<?=URL.$this->activeMenu?>/<?=$this->activeMenu?>/edit/<?=$item['id']?>">Edit</a></li>
-                                                                                                
-                                                                                                <li><a href="javascript:void(0)" data-toggle="modal" data-id="<?=$item['id']?>"  data-target="#myModal" class="openModal">Delete</a></li>
-                                                                                                
-                                                                                          </ul>
-											</div></td>
+                                    <td>
+                                        <?php
+                                        if ($item['status']=='Applied'){
+                                        ?>
+                                        <div class="btn-group">
+                                            <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span></button>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="<?= URL . $this->activeMenu ?>/<?= $this->activeMenu ?>/edit/<?= $item['id'] ?>">Edit</a></li>
+
+                                                <li><a href="javascript:void(0)" data-toggle="modal" data-id="<?= $item['id'] ?>"  data-target="#myModal" class="openModal">Delete</a></li>
+
+                                            </ul>
+                                        </div>
+                                        <?php
+                                        }
+                                        ?>
+                                    </td>
 
                                 </tr>
                                 <?php $i++;
-                            } ?>
+                            }
+                            ?>
 
                         </tbody>
                     </table>

@@ -34,8 +34,24 @@ class Cuti_Model extends Model{
         $id= implode("','", $id);
         
         }
-        $query = "Select * from $this->table where empid IN ('$id')and status <> 'Approved'";
+        $query = "Select a.*,b.fullName from $this->table a join employee b on a.empid=b.id where a.empid IN ('$id')";
         return $this->db->select($query);
         
+    }
+    public function approve($id,$date) {
+//        $date = date("Y-m-d", strtotime("-1 days"));
+        $query = "update  cuti set status='Approved' where id=$id  ";
+        $sth = $this->db->prepare($query);
+        $sth->execute();
+        $count = $sth->rowCount();
+        return $count;
+    }
+    public function rejected($id,$date) {
+//        $date = date("Y-m-d", strtotime("-1 days"));
+        $query = "update  cuti set status='Rejected' where id=$id ";
+        $sth = $this->db->prepare($query);
+        $sth->execute();
+        $count = $sth->rowCount();
+        return $count;
     }
 }

@@ -11,23 +11,25 @@
  *
  * @author Satria Persada <triasada@yahoo.com>
  */
-class Cuti extends Backend {
+class Cutiemp extends Backend {
 
-    protected $module_name = 'cuti';
-    protected $_title = 'Manage Emp leave';
+    protected $module_name = 'cutiemp';
+    protected $_title = 'leave application';
 
     function __construct() {
         parent::__construct();
         $this->loadCustomModel('group', 'group');
         $this->loadCustomModel('absen', 'absen');
+        $this->loadCustomModel('cuti', 'cuti');
     }
 
     public function Index() {
-            $result['data']['atasan'] = $this->model->getAll($this->inverior);
-            $this->view->js = array('js/atasan.js');
+        
+            $result['data']['pribadi'] = $this->cuti_model->get($this->id);
+            $this->view->js = array('js/index.js');
             $this->view->data = $result;
             $this->view->title = $this->_title;
-            $this->rendering('atasan');
+            $this->rendering('pribadi');
         
     }
     public function save($id=null) {
@@ -43,22 +45,6 @@ class Cuti extends Backend {
         $msg = ($result === 1) ? 'success' : 'failed';
         echo json_encode(array('success' => $success, 'msg' => $msg));
 //        var_dump($data);
-    }
-    function approve($id,$date=null) {
-        if (!isset($date)){
-            $date = date("Y-m-d", strtotime("-1 days"));
-        }
-        $result = $this->model->approve($id,$date);
-        echo json_encode($result);
-        
-    }
-    function rejected($id,$date=null) {
-        if (!isset($date)){
-            $date = date("Y-m-d", strtotime("-1 days"));
-        }
-        $result = $this->model->rejected($id,$date);
-        echo json_encode($result);
-        
     }
 
 }
