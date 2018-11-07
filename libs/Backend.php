@@ -61,12 +61,12 @@ class Backend extends Controller{
     
     public function add() {
         $this->view->js = array('js/detail.js');
-        $this->view->title = "Add ".$this->module_name;
+        $this->view->title = "Add ".$this->_title;
         $this->rendering('detail');
     }
     public function edit($id) {
         $this->view->js = array('js/detail.js');
-        $this->view->title = "Edit ".$this->module_name;
+        $this->view->title = "Edit ".$this->_title;
         $data = $this->model->get($id);
         $result['data'] = $data[0];
         $this->view->data = $result;
