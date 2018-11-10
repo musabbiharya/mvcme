@@ -85,13 +85,8 @@ class Absen_Model extends Model {
        
         $date = date("Y-m-d");
         $time = date('H:i:s');
-        if ($this->isWeekend($date)){
-            $weekend = true;
-        }
-        if ($this->isHoliday($date)){
-            $holiday = true;
-        }
-        $libur = $weekend || $holiday;
+        
+        $libur = $this->isHoliday($date) || $this->isWeekend($date);
             
         $query = "insert into attendance (empid,loc,dateAtt,inTime,isholiday) values ('$id','$loc','$date','$time','$libur') ";
 //        return $query;
