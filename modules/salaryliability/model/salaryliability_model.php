@@ -9,7 +9,7 @@
 * Jakarta International Container Terminal (JICT);
 */
 
-class Tunjangan_Model extends Model {
+class Salaryliability_Model extends Model {
     protected $table ='liability';
 //  protected $parent = 'employee';
 //    protected $joiner='empsalary.id=employee.id';
@@ -17,7 +17,6 @@ class Tunjangan_Model extends Model {
     public function __construct() {
         parent::__construct();
     }
-    
     public function get($id=null) {
         $customQuery = "";
         if (isset($id)) {
@@ -36,7 +35,9 @@ class Tunjangan_Model extends Model {
         if ($this->order !== NULL){
             $columnOder = "order by $this->table.$this->order $this->order_sort";
         }
-        $query = "select $this->table.* $columnJoin from $this->table  $queryJoin where $this->table.paidby=0" . $customQuery ." ".$columnOder ;
+        $query = "select $this->table.* $columnJoin from $this->table  $queryJoin where $this->table.paidby=1" . $customQuery ." ".$columnOder ;
         return $this->db->select($query);
     }
+    
+    
 }

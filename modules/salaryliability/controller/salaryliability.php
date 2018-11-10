@@ -9,17 +9,19 @@
 * Jakarta International Container Terminal (JICT);
 */
 
-class Tunjangan extends Backend{
-    protected $module_name='tunjangan';
-    protected $_title='Companies liability';
+class Salaryliability extends Backend{
+    protected $module_name='salaryliability';
+    protected $_title='Salary liability';
             function __construct() {
         parent::__construct();
         
     }
+    
+    
     public function save($id=null) {
         $data = filter_input_array(INPUT_POST);
         $data['createdby']=$this->id;
-         $data['paidby']=0;
+         $data['paidby']=1;
         if (isset($id)){
             $data['id']=$id;
         }
@@ -29,7 +31,4 @@ class Tunjangan extends Backend{
         echo json_encode(array('success' => $success, 'msg' => $msg));
 //        var_dump($data);
     }
-    
-    
-    
 }

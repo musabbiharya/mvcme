@@ -39,7 +39,7 @@
                                 <input class="form-control" name='amount' value="<?= $this->data['data']['amount'] ?>"/>
                                 <p class="help-block"></p>
                             </div>
-                           
+                            
                            
                             <button  type="button" class="btn btn-success" onclick="simpan()" >Submit</button>
                             <button type="reset" class="btn btn-primary">Reset</button>

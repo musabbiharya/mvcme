@@ -26,7 +26,6 @@
                                 <th>Code</th>
                                 <th>Description</th>
                                 <th>Amount</th>
-                                
                                 <th>Operation</th>
 
                             </tr>
@@ -41,7 +40,6 @@
                                     <td><?= $item['code'] ?></td>
                                     <td><?= $item['description'] ?></td>
                                     <td><?= $item['amount'] ?></td>
-                                    
 
                                     <td><div class="btn-group">
                                             <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span></button>
