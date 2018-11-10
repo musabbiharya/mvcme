@@ -3,6 +3,7 @@
 require_once 'Logging.php';
 
 class Database extends PDO {
+    protected $insertedID=null;
 
     public function __construct($DB_TYPE, $DB_HOST, $DB_NAME, $DB_USER, $DB_PASS) {
         parent::__construct($DB_TYPE . ':host=' . $DB_HOST . ';dbname=' . $DB_NAME, $DB_USER, $DB_PASS);
@@ -47,6 +48,7 @@ class Database extends PDO {
         }
 
         $sth->execute();
+        $this->insertedID=$this->lastInsertId(); 
         return ($sth->rowCount());
     }
 
@@ -113,6 +115,10 @@ class Database extends PDO {
 
         $sth2->execute();
         return $sth2->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function insertedId() {
+        return $this->insertedID;
+        
     }
 
 }
