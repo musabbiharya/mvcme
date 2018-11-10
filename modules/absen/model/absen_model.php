@@ -82,9 +82,18 @@ class Absen_Model extends Model {
     }
 
     public function absenIn($id = null, $loc = null) {
+       
         $date = date("Y-m-d");
         $time = date('H:i:s');
-        $query = "insert into attendance (empid,loc,dateAtt,inTime) values ('$id','$loc','$date','$time') ";
+        if ($this->isWeekend($date)){
+            $weekend = true;
+        }
+        if ($this->isHoliday($date)){
+            $holiday = true;
+        }
+        $libur = $weekend || $holiday;
+            
+        $query = "insert into attendance (empid,loc,dateAtt,inTime,isholiday) values ('$id','$loc','$date','$time','$libur') ";
 //        return $query;
         $sth = $this->db->prepare($query);
         $sth->execute();

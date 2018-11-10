@@ -31,7 +31,7 @@ class Model {
         return ($this->db->delete($this->table, $where));
     }
 
-    public function get($id=null) {
+    public function get($id = null) {
         $customQuery = "";
         if (isset($id)) {
             $customQuery = " where $this->table.id = $id";
@@ -46,11 +46,24 @@ class Model {
 
             $queryJoin = "join $this->parent  on $this->joiner ";
         }
-        if ($this->order !== NULL){
+        if ($this->order !== NULL) {
             $columnOder = "order by $this->table.$this->order $this->order_sort";
         }
-        $query = "select $this->table.* $columnJoin from $this->table  $queryJoin " . $customQuery ." ".$columnOder;
+        $query = "select $this->table.* $columnJoin from $this->table  $queryJoin " . $customQuery . " " . $columnOder;
         return $this->db->select($query);
+    }
+
+    public function isWeekend($date) {
+        return (date('N', strtotime($date)) >= 6);
+    }
+    public function isHoliday($date) {
+        $query = "Select * from liburNasional where libur = '$date'";
+        $d= $this->db->select($query);
+        if (count($d) === 0){
+            return false;
+        }
+        return true;
+        
     }
 
 }
