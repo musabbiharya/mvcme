@@ -17,7 +17,7 @@ $data = $db->select($query);
 //$period = date("Y-m", strtotime("+1 month"));
 $period = date("Y-m");
 foreach ($data as $value) {
-    $q2 = "select * from empsalary where id = $value[id]";
+    $q2 = "select * from emp_salary where id = $value[id]";
     $d2 = $db->select($q2);
     $total = 0;
     if (count($d2) > 0) {

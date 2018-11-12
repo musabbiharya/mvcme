@@ -10,9 +10,9 @@
 */
 
 class Employeebasic_Model extends Model {
-    protected $table ='empsalary';
+    protected $table ='emp_salary';
   protected $parent = 'employee';
-    protected $joiner='empsalary.id=employee.id';
+    protected $joiner='emp_salary.id=employee.id';
     protected $joincolumn=array('fullName'=>'fullName');
     public function __construct() {
         parent::__construct();

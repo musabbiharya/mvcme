@@ -65,7 +65,7 @@ class Absen_Model extends Model {
 
     public function getAttendaceInToday($id) {
         $date = date("Y-m-d");
-        $query = "SELECT * FROM attendance where  date_format(dateAtt, '%Y-%m-%d') = '$date' and empid = '$id' and inTime is not null";
+        $query = "SELECT * FROM emp_attendance where  date_format(dateAtt, '%Y-%m-%d') = '$date' and empid = '$id' and inTime is not null";
         $sth = $this->db->prepare($query);
         $sth->execute();
         $count = $sth->rowCount();
@@ -74,7 +74,7 @@ class Absen_Model extends Model {
 
     public function getAttendaceOutToday($id) {
         $date = date("Y-m-d");
-        $query = "SELECT * FROM attendance where  date_format(dateAtt, '%Y-%m-%d') = '$date' and empid = '$id' and outTime is not null ";
+        $query = "SELECT * FROM emp_attendance where  date_format(dateAtt, '%Y-%m-%d') = '$date' and empid = '$id' and outTime is not null ";
         $sth = $this->db->prepare($query);
         $sth->execute();
         $count = $sth->rowCount();
@@ -88,7 +88,7 @@ class Absen_Model extends Model {
         
         $libur = $this->isHoliday($date) || $this->isWeekend($date);
 	$libur = ($libur==true)?1:0;    
-        $query = "insert into attendance (empid,loc,dateAtt,inTime,isholiday) values ('$id','$loc','$date','$time','$libur') ";
+        $query = "insert into emp_attendance (empid,loc,dateAtt,inTime,isholiday) values ('$id','$loc','$date','$time','$libur') ";
 //        return $query;
         $sth = $this->db->prepare($query);
 	$this->log->lwrite($query);
@@ -100,7 +100,7 @@ class Absen_Model extends Model {
     public function absenOut($id = null, $loc = null) {
         $date = date('H:i:s');
         $datein = date("Y-m-d");
-        $query = "update  attendance set outTime= '$date' where  empid = '$id'  and date_format(dateAtt, '%Y-%m-%d') = '$datein' ";
+        $query = "update  emp_attendance set outTime= '$date' where  empid = '$id'  and date_format(dateAtt, '%Y-%m-%d') = '$datein' ";
 //        return $query;
         $sth = $this->db->prepare($query);
         $sth->execute();
@@ -117,13 +117,13 @@ class Absen_Model extends Model {
             }
             $customQuery = " and a.empid IN('$id')";
         }
-        $query = "select a.*, b.fullName from attendance a left join employee b on a.empid=b.id  where a.dateAtt like '$date%' $customQuery";
+        $query = "select a.*, b.fullName from emp_attendance a left join employee b on a.empid=b.id  where a.dateAtt like '$date%' $customQuery";
         return $this->db->select($query);
     }
 
     public function approve($id, $date) {
 //        $date = date("Y-m-d", strtotime("-1 days"));
-        $query = "update  attendance set status='Approved' where empid='$id' and dateAtt= '$date' ";
+        $query = "update  emp_attendance set status='Approved' where empid='$id' and dateAtt= '$date' ";
         $sth = $this->db->prepare($query);
         $sth->execute();
         $count = $sth->rowCount();
@@ -132,7 +132,7 @@ class Absen_Model extends Model {
 
     public function rejected($id, $date) {
 //        $date = date("Y-m-d", strtotime("-1 days"));
-        $query = "update  attendance set status='Rejected' where empid='$id' and dateAtt= '$date' ";
+        $query = "update  emp_attendance set status='Rejected' where empid='$id' and dateAtt= '$date' ";
         $sth = $this->db->prepare($query);
         $sth->execute();
         $count = $sth->rowCount();

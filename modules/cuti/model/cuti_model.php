@@ -12,7 +12,7 @@
  * @author Satria Persada <triasada@yahoo.com>
  */
 class Cuti_Model extends Model{
-   protected $table = 'cuti';
+   protected $table = 'emp_cuti';
 //     protected $order='order_column';
     protected $order_sort = 'asc';
 
@@ -40,7 +40,7 @@ class Cuti_Model extends Model{
     }
     public function approve($id,$date) {
 //        $date = date("Y-m-d", strtotime("-1 days"));
-        $query = "update  cuti set status='Approved' where id=$id  ";
+        $query = "update  $this->table set status='Approved' where id=$id  ";
         $sth = $this->db->prepare($query);
         $sth->execute();
         $count = $sth->rowCount();
@@ -48,7 +48,7 @@ class Cuti_Model extends Model{
     }
     public function rejected($id,$date) {
 //        $date = date("Y-m-d", strtotime("-1 days"));
-        $query = "update  cuti set status='Rejected' where id=$id ";
+        $query = "update  $this->table set status='Rejected' where id=$id ";
         $sth = $this->db->prepare($query);
         $sth->execute();
         $count = $sth->rowCount();

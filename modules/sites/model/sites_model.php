@@ -10,7 +10,7 @@
 */
 
 class Sites_Model extends Model {
-    protected $table ='placement';
+    protected $table ='emp_placement';
      protected $order='id';
     protected $order_sort='asc';
     public function __construct() {
