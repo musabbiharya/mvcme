@@ -87,10 +87,11 @@ class Absen_Model extends Model {
         $time = date('H:i:s');
         
         $libur = $this->isHoliday($date) || $this->isWeekend($date);
-            
+	$libur = ($libur==true)?1:0;    
         $query = "insert into attendance (empid,loc,dateAtt,inTime,isholiday) values ('$id','$loc','$date','$time','$libur') ";
 //        return $query;
         $sth = $this->db->prepare($query);
+	$this->log->lwrite($query);
         $sth->execute();
         $count = $sth->rowCount();
         return $count;
