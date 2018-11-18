@@ -105,6 +105,8 @@ class Absen_Model extends Model {
         $sth = $this->db->prepare($query);
         $sth->execute();
         $count = $sth->rowCount();
+        $qcall = "call totalhour('$id','$datein')";
+        $this->db->select($qcall);
         return $count;
     }
 
