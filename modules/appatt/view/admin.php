@@ -23,6 +23,7 @@
                     <table class="table table-striped table-bordered table-hover" id="grouptable">
                         <thead>
                             <tr>
+                                <th><input type="checkbox" id="ckall" onClick="toggle(this)"/> checkAll</th>
                                 <th>No</th>
                                 <th>empID</th>
                                 <th>Name</th>
@@ -35,16 +36,22 @@
                                 <th>Approval Stat</th>
                                 <th>Remarks</th>
 
-                                <th>Operation</th>
 
                             </tr>
                         </thead>
+                        <form id="formcheck">
                         <tbody>
                             <?php
                             $i = 1;
                             foreach ($this->data as $item) {
                                 ?>
                                 <tr class="odd gradeX">
+                                    <td><?php
+                                        if ($item['status']==''){
+                                        ?><input type="checkbox" name="ck[]" value="<?= $item['empid'] ?>"/>
+                                            <?php
+                                        }
+                                        ?></td>
                                     <td><?= $i ?></td>
                                     <td><?= $item['empid'] ?></td>
                                     <td><?= $item['fullName'] ?></td>
@@ -56,16 +63,7 @@
                                     <td><?= $item['loc'] ?></td>
                                     <td><?= $item['status'] ?></td>
                                     <td><?= $item['remarks'] ?></td>
-                                    <td>
-                                        <?php
-                                        if ($item['status']==''){
-                                        ?>
-                                        <a class="btn btn-success" href="javascript:void(0)" onclick="approve('<?=$item['empid']?>')">approve</a>
-                                        <a class="btn btn-danger" href="javascript:void(0)" onclick="rejected('<?=$item['empid']?>')">reject</a>
-                                        <?php
-                                        }
-                                        ?>
-                                    </td>
+                                    
 
                                 </tr>
                                 <?php $i++;
@@ -73,6 +71,9 @@
                             ?>
 
                         </tbody>
+                        <a class="btn btn-success" href="javascript:void(0)" onclick="approveAll()">Approve</a> |
+                        <a class="btn btn-danger" href="javascript:void(0)" onclick="rejectedAll()">reject</a>
+                        </form>
                     </table>
                 </div>
 

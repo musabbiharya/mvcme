@@ -55,5 +55,19 @@ class Appatt extends Backend {
         echo json_encode($result);
         
     }
+    
+    function approveAll($date=null){
+        $data = filter_input_array(INPUT_POST);
+//        var_dump($data['ck']);
+        if (!isset($date)){
+            $date = date("Y-m-d", strtotime("-1 days"));
+        }
+        foreach ($data['ck'] as $value) {
+            $result[$value] = $this->absen_model->approve($value,$date);
+            
+        }
+        echo json_encode($result);
+        
+    }
 
 }
