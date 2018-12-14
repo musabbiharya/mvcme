@@ -26,6 +26,7 @@
                                 <th>IN </th>
                                 <th>OUT </th>
                                 <th>Hrs </th>
+                                <th>Mnts </th>
                                 <th>Approval </th>
                                 <th>Remarks </th>
                                 
@@ -53,6 +54,7 @@
                                     <td><?= $item['inTime'] ?></td>
                                     <td><?= $item['outTime'] ?></td>
                                     <td><?= $item['hours'] ?></td>
+                                    <td><?= $item['minutes'] ?></td>
                                     <td><?= $item['status'] ?></td>
                                     <td><?= $item['keterangan'] ?></td>
                                     
