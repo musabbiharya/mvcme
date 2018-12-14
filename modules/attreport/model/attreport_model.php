@@ -30,7 +30,8 @@ class Attreport_Model extends Model {
         $pr= explode("-", $period);
         $thn = intval($pr[0]);
         $bln = intval($pr[1]);
-        $query = "Select * from emp_attendance where empid =$id and status ='Approved' and  dateAtt between '".$thn."-".($bln-1)."-22' and '".$period."-21'  order by dateAtt asc";
+//        $query = "Select a._date ,b.* from attendanceDate a left join emp_attendance b on a._date=b.dateAtt  where b.empid =$id and b.status ='Approved' and  a._date between '".$thn."-".($bln-1)."-22' and '".$period."-21'  order by a._date asc";
+        $query = "Select a.*,b.*,l.keterangan  from attendanceDate a left join (select * from emp_attendance where empid ='$id' and dateAtt between '".$thn."-".($bln-1)."-22' and '".$period."-21' ) b on a._date=b.dateAtt left join liburNasional l on a._date=l.libur order by a._date asc";
 //        return $query;
         return $this->db->select($query);
         

@@ -22,9 +22,11 @@
                             <tr>
                                 <th>No</th>
                                 <th>DATE </th>
+                                <th>DAY </th>
                                 <th>IN </th>
                                 <th>OUT </th>
                                 <th>Hrs </th>
+                                <th>Remarks </th>
                                 
 
 
@@ -34,13 +36,23 @@
                             <?php
                             $i = 1;
                             foreach ($this->data['data'] as $item) {
+                                $classhov ='';
+                                    if ($item['dateDay']=='Saturday' || $item['dateDay']=='Sunday' ||$item['keterangan']!='' ){
+                                        $classhov = 'success';
+                                    }else{
+                                        if ($item['inTime']==''){
+                                            $classhov = 'danger';
+                                        }
+                                    }
                                 ?>
-                                <tr class="odd gradeX">
+                                <tr class="odd gradeX <?=$classhov?>">
                                     <td></td>
-                                    <td><?= $item['dateAtt'] ?></td>
+                                    <td><?= $item['_date'] ?></td>
+                                    <td><?= $item['dateDay'] ?></td>
                                     <td><?= $item['inTime'] ?></td>
                                     <td><?= $item['outTime'] ?></td>
                                     <td><?= $item['hours'] ?></td>
+                                    <td><?= $item['keterangan'] ?></td>
                                     
                                     
 
