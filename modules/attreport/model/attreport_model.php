@@ -20,14 +20,18 @@ class Attreport_Model extends Model {
     }
     
     public function getPeriod($param) {
-        $query = "select $this->table.*,employee.fullName from $this->table join employee on $this->table.empid = employee.id where $this->table.periode = '$param'"; 
+        $query = "select $this->table.*,employee.fullName, employee.id from $this->table join employee on $this->table.empid = employee.id where $this->table.periode = '$param'"; 
         $this->log->lwrite($query);
         return $this->db->select($query);
         
     }
     
-    public function getDetail($id) {
-        $query = "Select * from salaryDetail where headerid = $id order by id asc, item desc";
+    public function getDetail($id,$period) {
+        $pr= explode("-", $period);
+        $thn = intval($pr[0]);
+        $bln = intval($pr[1]);
+        $query = "Select * from emp_attendance where empid =$id and status ='Approved' and  dateAtt between '".$period."-22' and '".$thn."-".($bln+1)."-21'  order by dateAtt asc";
+//        return $query;
         return $this->db->select($query);
         
     }

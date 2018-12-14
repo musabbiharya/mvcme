@@ -45,6 +45,7 @@ if (isset($this->period)){
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Workdays</th>
                                 <th>Diff</th>
@@ -59,6 +60,7 @@ if (isset($this->period)){
                                 ?>
                                 <tr class="odd gradeX">
                                     <td></td>
+                                    <td><a href="javascript:void(0)" onclick="detail(<?= $item['id'] ?>)"><?= $item['id'] ?></a> </td>
                                     <td><?= $item['fullName'] ?></td>
                                     <td><?= $item['total'] ?></td>
                                     

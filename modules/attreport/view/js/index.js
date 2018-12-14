@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-
+var datatablenya;
 $(document).on('click', '.projectprice', function () {
     //alert('tes');
     var datepicker = $('#datepicker').val();
@@ -33,3 +33,8 @@ t.on('order.dt search.dt', function () {
         cell.innerHTML = i + 1;
     });
 }).draw();
+
+function detail(id){
+    var datepicker = $('#datepicker').val();
+    window.location.href = home + 'attreport/detail/'+ datepicker+'/'+id;
+}

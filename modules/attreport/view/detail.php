@@ -21,9 +21,11 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Description </th>
-                                <th style="width: 10%"></th>
-                                <th style="width: 10%"></th>
+                                <th>DATE </th>
+                                <th>IN </th>
+                                <th>OUT </th>
+                                <th>Hrs </th>
+                                
 
 
                             </tr>
@@ -35,24 +37,11 @@
                                 ?>
                                 <tr class="odd gradeX">
                                     <td></td>
-                                    <td><?= $item['item'] ?></td>
-                                    <?php
-                                    if ($item['transaction']=='KREDIT'){
-                                        ?>
-                                        <td></td>
-
-                                        <td class="text-right"><?=$item['amount']?></td>
-                                    <?php
+                                    <td><?= $item['dateAtt'] ?></td>
+                                    <td><?= $item['inTime'] ?></td>
+                                    <td><?= $item['outTime'] ?></td>
+                                    <td><?= $item['hours'] ?></td>
                                     
-                                    }else{
-                                        ?>
-                                        <td class="text-right"><?=$item['amount']?></td>
-
-                                        <td></td>
-                                    <?php
-                                    
-                                    }
-                                        ?>
                                     
 
                                 </tr>

@@ -18,6 +18,7 @@ class Attreport extends Backend {
         parent::__construct();
         $this->loadCustomModel('project', 'project');
         $this->loadCustomModel('items', 'items');
+        $this->loadCustomModel('employee', 'employee');
     }
 
     public function Index($period=null) {
@@ -33,11 +34,12 @@ class Attreport extends Backend {
         $this->rendering('index');
     }
 
-    public function detail($id=null,$empid=null,$name=null) {
-        $result['data'] = $this->model->getDetail($id);
+    public function detail($period,$empid=null) {
+        $result['data'] = $this->model->getDetail($empid,$period);
+        $name = $this->employee_model->get($empid)[0]['fullName'];
         $this->view->js = array('js/detail.js');
         $this->view->data = $result;
-        $this->view->title = 'Detail Salary';
+        $this->view->title = 'Detail Attendace';
         $this->view->empid = $empid;
         $this->view->empname = $name;
         $this->rendering('detail');
