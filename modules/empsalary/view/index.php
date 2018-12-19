@@ -8,6 +8,7 @@
  * Jakarta International Container Terminal (JICT);
  */
 //var_dump($this->data['data']);
+$period = date("Y-m");
 ?>
 
 <div class="row">
@@ -16,13 +17,23 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 
-                <input id="datepicker" type="text"  class="datepicker"  value="<?=$this->period?>" readonly>
+                <input id="datepicker" type="text"  class="datepicker"  value="<?=($this->period)?$this->period:$period?>" readonly>
                         
                 <a class="btn btn-success projectprice" >Show</a>
 
             </div>
             <div class="panel-body">
-                            
+                <?php 
+                if (empty($this->data['data'])){
+                ?>
+                start date <input id="startdate" type="text"  class="datepicker"  value="" readonly>
+                end date <input id="enddate" type="text"  class="datepicker"  value="" readonly>
+                 <a class="btn btn-primary generatesal" >Generate</a>       
+                 <?php
+                }else{?>
+                    <a class="btn btn-primary emptyer" >Empty</a>   
+                <?php }
+                 ?>
 
             </div>
         </div>

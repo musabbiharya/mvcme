@@ -21,6 +21,36 @@ $("#datepicker").datepicker({
     viewMode: "months",
     minViewMode: "months"
 });
+$("#startdate").datepicker({
+    format: "yyyy-mm-dd"
+});
+$("#enddate").datepicker({
+    format: "yyyy-mm-dd"
+});
+
+$(document).on('click', '.generatesal', function () {
+    //alert('tes');
+    var startdate = $('#startdate').val();
+    var datepicker = $('#datepicker').val();
+    var enddate = $('#enddate').val();
+    if (startdate !== "" ||enddate !== "" ) {
+        window.location.href = home + 'empsalary/generatesalary/'+ startdate+'/'+enddate+'/'+datepicker;
+    }else{
+        splash('glyphicon glyphicon-remove', 'alert alert-danger', 'startdate and enddate Cannot be Empty');
+    }
+}
+);
+
+$(document).on('click', '.emptyer', function () {
+    //alert('tes');
+    var datepicker = $('#datepicker').val();
+    if (datepicker !== "") {
+        window.location.href = home + 'empsalary/emptyer/'+ datepicker;
+    }else{
+        splash('glyphicon glyphicon-remove', 'alert alert-danger', 'Period Cannot be Empty');
+    }
+}
+);
 
 var t = $('#headersalary').DataTable({
     

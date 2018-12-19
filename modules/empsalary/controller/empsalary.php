@@ -21,12 +21,11 @@ class Empsalary extends Backend {
     }
 
     public function Index($period=null) {
-        if (isset($period)){
+        if (!isset($period)){
+        $period = date("Y-m");
+        }
         $result['data'] = $this->model->getPeriod($period);
         $this->view->period = $period;
-        
-        }
-        
         $this->view->js = array('js/index.js');
         $this->view->data = $result;
         $this->view->title = $this->_title;
@@ -42,6 +41,14 @@ class Empsalary extends Backend {
         $this->view->empname = $name;
         $this->rendering('detail');
         
+    }
+    public function generatesalary($startdate,$enddate,$period) {
+        $this->model->generatesalary($startdate,$enddate,$period);
+        $this->Index($period);
+    }
+    public function emptyer($period) {
+        $this->model->emptyer($period);
+        $this->Index($period);
     }
 
 }
