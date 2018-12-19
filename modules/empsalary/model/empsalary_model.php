@@ -100,6 +100,8 @@ foreach ($data as $value) {
         $this->db->select($query2);
         $query3 ="delete from  emp_report_att where periode = '$period'";
         $this->db->select($query3);
+        $queryset2 = "SET SQL_SAFE_UPDATES = 1";
+        $this->db->select($queryset2);
         
         
     }
