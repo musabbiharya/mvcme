@@ -20,7 +20,10 @@ class Spkl_Model extends Model {
         parent::__construct();
     }
     public function get($id = null) {
-        $query = "select a.*,b.fullName from $this->table a join employee b where a.createdby=b.id ";
+        if (isset($id)){
+            $customquery = "where  a.id = $id";
+        }
+        $query = "select a.*,b.fullName from $this->table a join employee b on a.createdby=b.id $customquery ";
 //        return $query;
         return $this->db->select($query);
     }
