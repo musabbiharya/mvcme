@@ -36,6 +36,8 @@ $data = $this->db->select($query);
 //$period = date("Y-m", strtotime("+1 month"));
 //$period = date("Y-m");
 foreach ($data as $value) {
+    $umplist = $q2 = "select * from companyRole where code = 'UMP'";
+    $ump = $this->db->select($umplist)[0]['roleVal'];
     $q2 = "select * from emp_salary where id = $value[id]";
     $d2 = $this->db->select($q2);
     $total = 0;
@@ -68,11 +70,20 @@ foreach ($data as $value) {
             $d4 = $this->db->select($q4);
             foreach ($d4 as $value) {
                 $trans = ($value['paidby'] == 0) ? 'KREDIT' : 'DEBIT';
+                if ($value['code']=='BPJS' || $value['code']=='BPJSK'){
+                    if ($basic>$ump){
+                    $t_amount = round(($value['amount']*$basic)/100);
+                    }else{
+                        $t_amount = round(($value['amount']*$ump)/100);
+                    }
+                }else{
+                    $t_amount=round(($value['amount']*$basic)/100);
+                }
                 $this->db->insert("salaryDetail", array(
                     'headerid' => $idheader,
                     'item' => $value['description'],
                     'transaction' => $trans,
-                    'amount' => round(($value['amount']*$basic)/100),
+                    'amount' => $t_amount,
                 ));
                 if ($trans=='KREDIT'){
                     $total = $total + round(($value['amount']*$basic)/100);
