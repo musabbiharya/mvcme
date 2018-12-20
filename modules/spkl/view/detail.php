@@ -23,8 +23,8 @@
 
                         <form role="form" id="dataForm"  action="<?= URL . $this->activeMenu ?>/<?= $this->activeMenu ?>/save/<?= $this->data['data']['id'] ?>">
                             <div class="form-group input-group input-group">
-                                <span class="input-group-addon" style="width: 100px">SPKL NO</span>
-                                <input id="datepicker" type="text"  class="form-control datepicker" name='spklNumber' value="<?= $this->data['data']['spklNumber'] ?>"/>
+                                <span class="input-group-addon" style="width: 100px">SPKL No</span>
+                                <input class="form-control" name='spklNumber' value="<?= $this->data['data']['spklNumber'] ?>"/>
                                 <p class="help-block"></p>
                             </div>
                             <div class="form-group input-group input-group">
