@@ -9,7 +9,7 @@ $('body').modalLoad('Delete Date','delete');
 $(document).on("click", ".openModal", function () {
      var data = $(this).data('id');
      $(".modal-footer .btn-primary").attr('onclick',"del('"+data+"')");
-     $(".modal-body").append('<span>Hapus menu Id '+data+'? </span>');
+     $(".modal-body").append('<span>Delete '+data+'? </span>');
 });
 
 
@@ -19,7 +19,7 @@ $('#splash').removeClass();
     $('#splash span').removeClass();
     $.ajax({
         type: "POST",
-        url: home+'libur/del/'+id,
+        url: home+'spkl/del/'+id,
         data: id,
         success: function (data) {
             if (data.success) {

@@ -7,7 +7,7 @@
  * 6:43:34 PM;
  * Jakarta International Container Terminal (JICT);
  */
-var_dump($his->employee);
+//var_dump($his->employee);
 ?>
 
 <div class="row">
@@ -22,6 +22,11 @@ var_dump($his->employee);
                     <div class="col-md-6">
 
                         <form role="form" id="dataForm"  action="<?= URL . $this->activeMenu ?>/<?= $this->activeMenu ?>/save/<?= $this->data['data']['id'] ?>">
+                            <div class="form-group input-group input-group">
+                                <span class="input-group-addon" style="width: 100px">SPKL NO</span>
+                                <input id="datepicker" type="text"  class="form-control datepicker" name='spklNumber' value="<?= $this->data['data']['spklNumber'] ?>"/>
+                                <p class="help-block"></p>
+                            </div>
                             <div class="form-group input-group input-group">
                                 <span class="input-group-addon" style="width: 100px">Overtime Date</span>
                                 <input id="datepicker" type="text"  class="form-control datepicker" name='spkldate' value="<?= $this->data['data']['spkldate'] ?>"/>
@@ -40,11 +45,11 @@ var_dump($his->employee);
                                 </div>
                                 <?php
                                 foreach ($this->employee as $value) {
-                                    $check = in_array($value['id'], $role) ? 'checked' : '';
+                                    $check = in_array($value['id'], $this->data['data']['list']) ? 'checked' : '';
                                     ?>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" name="role[]" value="<?= $value['id'] ?>"  <?= $check ?> /><?= $value['fullName'] ?>
+                                            <input type="checkbox" name="emp[]" value="<?= $value['id'] ?>"  <?= $check ?> /><?= $value['fullName'] ?>
                                         </label>
                                     </div>
 

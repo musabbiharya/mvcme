@@ -24,8 +24,11 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Date</th>
-                                <th>Descript</th>
+                                <th>SPKL No</th>
+                                <th>SPKL Date</th>
+                                <th>Desc</th>
+                                <th>Created</th>
+                                <th>By</th>
 
                                 <th>Operation</th>
 
@@ -38,8 +41,11 @@
                                 ?>
                                 <tr class="odd gradeX">
                                     <td></td>
-                                    <td><?= $item['libur'] ?></td>
+                                    <td><?= $item['spklNumber'] ?></td>
+                                    <td><?= $item['spkldate'] ?></td>
                                     <td><?= $item['keterangan'] ?></td>
+                                    <td><?= $item['created'] ?></td>
+                                    <td><?= $item['fullName'] ?></td>
                                     <td><div class="btn-group">
                                             <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span></button>
                                             <ul class="dropdown-menu">
