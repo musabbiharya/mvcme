@@ -70,15 +70,15 @@ foreach ($data as $value) {
             $d4 = $this->db->select($q4);
             foreach ($d4 as $value) {
                 $trans = ($value['paidby'] == 0) ? 'KREDIT' : 'DEBIT';
-                if ($value['code']=='BPJS' || $value['code']=='BPJSK'){
+//                if ($value['code']=='BPJS' || $value['code']=='BPJSK'){
                     if ($basic>$ump){
                     $t_amount = round(($value['amount']*$basic)/100);
                     }else{
                         $t_amount = round(($value['amount']*$ump)/100);
                     }
-                }else{
-                    $t_amount=round(($value['amount']*$basic)/100);
-                }
+//                }else{
+//                    $t_amount=round(($value['amount']*$basic)/100);
+//                }
                 $this->db->insert("salaryDetail", array(
                     'headerid' => $idheader,
                     'item' => $value['description'],
