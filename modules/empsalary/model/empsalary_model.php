@@ -100,6 +100,22 @@ foreach ($data as $value) {
 }
         $querypot="call potongan('$period', '$startdate', '$enddate')";
                 $this->db->select($querypot);
+                
+        $querytotal = "select id from salaryHeader where periode = '$period'"; 
+        $head = $this->db->select($querytotal);
+        foreach ($head as $value) {
+            $querydetail = "select sum(amount) as kre from salaryDetail where headerid =".$value['id']." and transaction ='KREDIT'";
+            $det = $this->db->select($querydetail)[0]['kre'];
+            $querydetail2 = "select sum(amount) as deb from salaryDetail where headerid =".$value['id']." and transaction ='DEBIT'";
+            $det2 = $this->db->select($querydetail2)[0]['deb'];
+            $totalnew = intval($det)-intval($det2);
+            
+            $qn= "update salaryHeader set total = $totalnew where id =".$value['id'];
+            $this->db->select($qn);
+            
+            
+        }
+//        return $head;
     }
     
     public function emptyer($period) {
